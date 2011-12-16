@@ -1,0 +1,9 @@
+[core]
+editor = vim -u NONE
+
+[alias]
+st=status --untracked-files=no
+ci=commit
+[user]
+	name = Doug Bell
+	email = madcityzen@gmail.com
