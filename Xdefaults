@@ -30,3 +30,7 @@ xterm*colorBD: rgb:fc/fc/fc
 xterm*termName: xterm-color
 xterm*saveLines: 2000
 
+xterm*ttyModes: erase ^?
+xterm*VT100.Translations: \
+    #override <Key>BackSpace:   string(0x7f) \n\
+              <Key>Delete:      string(0x1b) string("[3~")
