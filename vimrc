@@ -5,7 +5,7 @@ filetype plugin indent on
 
 "----------------------------------------------------------------------------
 " Common settings
-colorscheme pablo
+colorscheme solarized
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
 set tabstop=8                       " Use 8 spaces for tabs
@@ -51,7 +51,7 @@ filetype plugin on
 set guioptions-=e
 set guioptions-=T
 set guioptions+=ac
-set guifont=Inconsolata:h12
+"set guifont=Inconsolata:h12
 
 " Use ack for :grep
 set grepprg=ack\ -a
@@ -98,14 +98,16 @@ au BufRead,BufNewFile *.md  setl lbr wm=4 tw=78
 "nmap gx yiw/^\(sub\<Bar>function\)\s\+<C-R>"<CR>
 
 " Escape and unescape HTML
-function HtmlEscape()
+function! HtmlEscape()
   silent s/&/\&amp;/eg
   silent s/</\&lt;/eg
   silent s/>/\&gt;/eg
 endfunction
+map <Leader>hh :call HtmlEscape()<Enter>
 
-function HtmlUnEscape()
+function! HtmlUnEscape()
   silent s/&lt;/</eg
   silent s/&gt;/>/eg
   silent s/&amp;/\&/eg
 endfunction
+map <Leader>hu :call HtmlUnEscape()<Enter>
