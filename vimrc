@@ -55,7 +55,7 @@ set guioptions+=ac
 "set guifont=Inconsolata:h12
 
 " Use ack for :grep
-set grepprg=ack\ -a
+set grepprg=ack
 
 " Make a . repeat for :
 map <Leader>. @:
