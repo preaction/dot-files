@@ -1,9 +1,14 @@
 [core]
-editor = vim -u NONE
+	editor = vim -u NONE
+
+[branch]
+	autosetuprebase = always
 
 [alias]
-st=status
-ci=commit
+	st=status
+	ci=commit -v
 [user]
 	name = Doug Bell
 	email = madcityzen@gmail.com
+[push]
+	default = simple
