@@ -15,7 +15,7 @@ ZSH_THEME="gallifrey"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -24,7 +24,7 @@ ZSH_THEME="gallifrey"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want to disable command autocorrection
 # DISABLE_CORRECTION="true"
@@ -45,3 +45,19 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+if [[ -d $HOME/dot-files/bin ]]; then
+    export PATH=$HOME/dot-files/bin:$PATH
+fi
+if [[ -d $HOME/bin ]]; then
+    export PATH=$HOME/bin:$PATH
+fi
+
+if [[ -f $HOME/.zsh.after ]]; then
+    source $HOME/.zsh.after;
+fi
+
+# START TMUX SESSION
+if [[ -x `which tmux` ]]; then
+    tmx login
+fi
+
