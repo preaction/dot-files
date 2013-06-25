@@ -48,16 +48,6 @@
 :VimwikiVSplitLink	vimwiki.txt	/*:VimwikiVSplitLink*
 <Plug>(neocomplcache_snippets_expand)	neocomplcache.txt	/*<Plug>(neocomplcache_snippets_expand)*
 <Plug>(neocomplcache_snippets_jump)	neocomplcache.txt	/*<Plug>(neocomplcache_snippets_jump)*
-EnhComm-Bugs	EnhancedCommentify.txt	/*EnhComm-Bugs*
-EnhComm-Credits	EnhancedCommentify.txt	/*EnhComm-Credits*
-EnhComm-EnhCommentify	EnhancedCommentify.txt	/*EnhComm-EnhCommentify*
-EnhComm-Fallbacks	EnhancedCommentify.txt	/*EnhComm-Fallbacks*
-EnhComm-Keybindings	EnhancedCommentify.txt	/*EnhComm-Keybindings*
-EnhComm-NewLanguages	EnhancedCommentify.txt	/*EnhComm-NewLanguages*
-EnhComm-Options	EnhancedCommentify.txt	/*EnhComm-Options*
-EnhComm-Support	EnhancedCommentify.txt	/*EnhComm-Support*
-EnhancedCommentify	EnhancedCommentify.txt	/*EnhancedCommentify*
-EnhancedCommentify()	EnhancedCommentify.txt	/*EnhancedCommentify()*
 VimwikiWeblinkHandler	vimwiki.txt	/*VimwikiWeblinkHandler*
 abbrev_complete	neocomplcache.txt	/*abbrev_complete*
 buffer_complete	neocomplcache.txt	/*buffer_complete*
