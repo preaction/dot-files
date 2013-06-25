@@ -44,7 +44,13 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+######################################################################################
 # Customize to your needs...
+
+# Vi keybindings
+bindkey -v
+
+# Bin scripts
 if [[ -d $HOME/dot-files/bin ]]; then
     export PATH=$HOME/dot-files/bin:$PATH
 fi
@@ -52,6 +58,7 @@ if [[ -d $HOME/bin ]]; then
     export PATH=$HOME/bin:$PATH
 fi
 
+# Site-specific customizations
 if [[ -f $HOME/.zshrc.after ]]; then
     source $HOME/.zshrc.after;
 fi
