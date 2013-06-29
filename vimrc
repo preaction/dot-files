@@ -52,7 +52,7 @@ filetype plugin on
 set guioptions-=e
 set guioptions-=T
 set guioptions+=ac
-"set guifont=Inconsolata:h12
+set guifont=DejaVuSansMonoForPowerline:h12
 
 " Use ack for :grep
 set grepprg=ack
