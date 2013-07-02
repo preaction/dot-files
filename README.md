@@ -1,16 +1,15 @@
 
 # Vim
 
-## Command-T
+## Powerline
 
-Command-T requires compilation
+* Powerline may not work in all vims.
+* Remember to add the patched font!
 
-    cd vim/bundle/Command-T/ruby/command-t
-    ruby extconf.rb
-    make
+# Zsh
 
-Afterward, from inside vim:
+## Oh-My-Zsh
 
-    :call pathogen#helptags()
+## Powerline
 
-Be careful: Command-T will take some time to load initially!
+* Remember to add the patched font!
