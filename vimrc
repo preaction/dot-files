@@ -112,3 +112,10 @@ function! HtmlUnEscape()
   silent s/&amp;/\&/eg
 endfunction
 map <Leader>hu :call HtmlUnEscape()<Enter>
+
+"--------------------
+" Powerline
+set rtp+=~/dot-files/powerline/powerline/bindings/vim
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
