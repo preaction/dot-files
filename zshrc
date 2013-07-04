@@ -46,9 +46,17 @@ source $ZSH/oh-my-zsh.sh
 
 ######################################################################################
 # Customize to your needs...
+#
+
+export EDITOR=vim
+
+# Tmuxinator
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # Vi keybindings
 bindkey -v
+# Emacs keybindings
+bindkey -e
 
 # Bin scripts
 if [[ -d $HOME/dot-files/bin ]]; then
