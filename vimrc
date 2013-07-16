@@ -6,7 +6,7 @@ filetype plugin indent on
 "----------------------------------------------------------------------------
 " Common settings
 colorscheme solarized
-set background=light                " BLACK AS NIGHT
+set background=dark                 " BLACK AS NIGHT
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
 set tabstop=8                       " Use 8 spaces for tabs
