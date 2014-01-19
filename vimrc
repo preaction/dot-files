@@ -79,8 +79,8 @@ let g:git_branch_status_around=""           " Nothing around branch
 let g:git_branch_status_head_current=1      " Only current head
 
 " Actionscript files
-au BufRead,BufNewFile *.as   setl filetype=actionscript noet ts=4 nolist
-au BufRead,BufNewFile *.mxml setl filetype=mxml noet ts=4 nolist
+au BufRead,BufNewFile *.as   setl filetype=actionscript
+au BufRead,BufNewFile *.mxml setl filetype=mxml
 
 " Perl .t files
 au BufRead,BufNewFile *.t set filetype=perl
