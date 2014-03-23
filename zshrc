@@ -66,6 +66,11 @@ if [[ -d $HOME/bin ]]; then
     export PATH=$HOME/bin:$PATH
 fi
 
+# Git-subrepo
+if [[ -d $HOME/dot-files/git-subrepo/lib ]]; then
+    export GIT_EXEC_PATH="$HOME/dot-files/git-subrepo/lib:$(git --exec-path)"
+fi
+
 # Site-specific customizations
 if [[ -f $HOME/.zshrc.after ]]; then
     source $HOME/.zshrc.after;
