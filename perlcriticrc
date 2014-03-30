@@ -1,0 +1,429 @@
+[BuiltinFunctions::ProhibitBooleanGrep]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitComplexMappings]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitLvalueSubstr]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitReverseSortBlock]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitSleepViaSelect]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitStringyEval]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitStringySplit]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitUniversalCan]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitUniversalIsa]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitVoidGrep]
+add_themes = test script module
+
+[BuiltinFunctions::ProhibitVoidMap]
+add_themes = test script module
+
+[BuiltinFunctions::RequireBlockGrep]
+add_themes = test script module
+
+[BuiltinFunctions::RequireBlockMap]
+add_themes = test script module
+
+[BuiltinFunctions::RequireGlobFunction]
+add_themes = test script module
+
+[BuiltinFunctions::RequireSimpleSortBlock]
+add_themes = test script module
+
+[ClassHierarchies::ProhibitAutoloading]
+add_themes = test script module
+
+[ClassHierarchies::ProhibitExplicitISA]
+add_themes = test script module
+
+[ClassHierarchies::ProhibitOneArgBless]
+add_themes = test script module
+
+[CodeLayout::ProhibitHardTabs]
+add_themes = test script module
+
+[CodeLayout::ProhibitParensWithBuiltins]
+add_themes = test script module
+
+[CodeLayout::ProhibitQuotedWordLists]
+add_themes = test script module
+
+[CodeLayout::ProhibitTrailingWhitespace]
+add_themes = test script module
+
+[CodeLayout::RequireConsistentNewlines]
+add_themes = test script module
+
+[-CodeLayout::RequireTidyCode]
+; Tidy as necessary
+
+[CodeLayout::RequireTrailingCommas]
+add_themes = test script module
+
+[ControlStructures::ProhibitCStyleForLoops]
+add_themes = test script module
+
+[ControlStructures::ProhibitCascadingIfElse]
+add_themes = test script module
+
+[ControlStructures::ProhibitDeepNests]
+add_themes = test script module
+
+[ControlStructures::ProhibitLabelsWithSpecialBlockNames]
+add_themes = test script module
+
+[ControlStructures::ProhibitMutatingListFunctions]
+add_themes = test script module
+
+[ControlStructures::ProhibitNegativeExpressionsInUnlessAndUntilConditions]
+add_themes = test script module
+
+[ControlStructures::ProhibitPostfixControls]
+add_themes = test script module
+
+[-ControlStructures::ProhibitUnlessBlocks]
+; I like unless blocks
+
+[ControlStructures::ProhibitUnreachableCode]
+add_themes = test script module
+
+[ControlStructures::ProhibitUntilBlocks]
+add_themes = test script module
+
+[Documentation::RequirePackageMatchesPodName]
+add_themes = module
+
+[Documentation::RequirePodAtEnd]
+add_themes = test script module
+
+[Documentation::RequirePodLinksIncludeText]
+add_themes = test script module
+
+[Documentation::RequirePodSections]
+add_themes = test script module
+lib_sections = SYNOPSIS | DESCRIPTION
+script_sections = SYNOPSIS | DESCRIPTION | OPTIONS | ARGUMENTS
+
+[-ErrorHandling::RequireCarping]
+; I prefer using Carp::Always
+
+[ErrorHandling::RequireCheckingReturnValueOfEval]
+add_themes = test script module
+
+[InputOutput::ProhibitBacktickOperators]
+add_themes = test script module
+
+[InputOutput::ProhibitBarewordFileHandles]
+add_themes = test script module
+
+[InputOutput::ProhibitExplicitStdin]
+add_themes = test script module
+
+[InputOutput::ProhibitInteractiveTest]
+add_themes = test script module
+
+[InputOutput::ProhibitJoinedReadline]
+add_themes = test script module
+
+[InputOutput::ProhibitOneArgSelect]
+add_themes = test script module
+
+[InputOutput::ProhibitReadlineInForLoop]
+add_themes = test script module
+
+[InputOutput::ProhibitTwoArgOpen]
+add_themes = test script module
+
+[InputOutput::RequireBracedFileHandleWithPrint]
+add_themes = test script module
+
+[InputOutput::RequireBriefOpen]
+add_themes = test script module
+
+[InputOutput::RequireCheckedClose]
+add_themes = test script module
+
+[InputOutput::RequireCheckedOpen]
+add_themes = test script module
+
+[InputOutput::RequireCheckedSyscalls]
+add_themes = test script module
+
+[InputOutput::RequireEncodingWithUTF8Layer]
+add_themes = test script module
+
+[Miscellanea::ProhibitFormats]
+add_themes = test script module
+
+[Miscellanea::ProhibitTies]
+add_themes = test script module
+
+[Miscellanea::ProhibitUnrestrictedNoCritic]
+add_themes = test script module
+
+[Miscellanea::ProhibitUselessNoCritic]
+add_themes = test script module
+
+[Modules::ProhibitAutomaticExportation]
+add_themes = test script module
+
+[Modules::ProhibitConditionalUseStatements]
+add_themes = test script module
+
+[Modules::ProhibitEvilModules]
+add_themes = test script module
+
+[Modules::ProhibitExcessMainComplexity]
+add_themes = test script module
+
+[Modules::ProhibitMultiplePackages]
+; I do not agree with this
+severity = 1
+
+[Modules::RequireBarewordIncludes]
+add_themes = test script module
+
+[Modules::RequireEndWithOne]
+add_themes = module
+
+[Modules::RequireExplicitPackage]
+add_themes = module
+
+[Modules::RequireFilenameMatchesPackage]
+add_themes = module
+
+[Modules::RequireNoMatchVarsWithUseEnglish]
+add_themes = test script module
+
+[-Modules::RequireVersionVar]
+; This is added by Dist::Zilla
+
+[NamingConventions::Capitalization]
+add_themes = test script module
+
+[NamingConventions::ProhibitAmbiguousNames]
+add_themes = test script module
+
+[Objects::ProhibitIndirectSyntax]
+add_themes = test script module
+
+[References::ProhibitDoubleSigils]
+severity = 1
+add_themes = test script module
+
+[RegularExpressions::ProhibitCaptureWithoutTest]
+add_themes = test script module
+
+[RegularExpressions::ProhibitComplexRegexes]
+add_themes = test script module
+
+[RegularExpressions::ProhibitEnumeratedClasses]
+add_themes = test script module
+
+[RegularExpressions::ProhibitEscapedMetacharacters]
+add_themes = test script module
+
+[RegularExpressions::ProhibitFixedStringMatches]
+add_themes = test script module
+
+[RegularExpressions::ProhibitSingleCharAlternation]
+add_themes = test script module
+
+[RegularExpressions::ProhibitUnusedCapture]
+add_themes = test script module
+
+[RegularExpressions::ProhibitUnusualDelimiters]
+add_themes = test script module
+
+[RegularExpressions::RequireBracesForMultiline]
+add_themes = test script module
+
+[RegularExpressions::RequireDotMatchAnything]
+severity = 1
+add_themes = test script module
+
+[RegularExpressions::RequireExtendedFormatting]
+severity = 1
+add_themes = test script module
+
+[RegularExpressions::RequireLineBoundaryMatching]
+severity = 1
+add_themes = test script module
+
+[Subroutines::ProhibitAmpersandSigils]
+add_themes = test script module
+
+[Subroutines::ProhibitBuiltinHomonyms]
+add_themes = test script module
+
+[Subroutines::ProhibitExcessComplexity]
+add_themes = test script module
+
+[Subroutines::ProhibitExplicitReturnUndef]
+add_themes = test script module
+
+[Subroutines::ProhibitManyArgs]
+add_themes = test script module
+
+[Subroutines::ProhibitNestedSubs]
+add_themes = test script module
+
+[Subroutines::ProhibitReturnSort]
+add_themes = test script module
+
+[Subroutines::ProhibitSubroutinePrototypes]
+add_themes = test script module
+
+[Subroutines::ProhibitUnusedPrivateSubroutines]
+private_name_regex = \b_(?!build_)\w+\b
+; "_build_" subs are fine
+add_themes = test script module
+
+[Subroutines::ProtectPrivateSubs]
+add_themes = test script module
+
+[Subroutines::RequireArgUnpacking]
+add_themes = test script module
+
+[Subroutines::RequireFinalReturn]
+add_themes = test script module
+severity = 2
+
+[TestingAndDebugging::ProhibitNoStrict]
+add_themes = test script module
+
+[TestingAndDebugging::ProhibitNoWarnings]
+add_themes = test script module
+
+[TestingAndDebugging::ProhibitProlongedStrictureOverride]
+add_themes = test script module
+
+[TestingAndDebugging::RequireTestLabels]
+add_themes = test script module
+
+[TestingAndDebugging::RequireUseStrict]
+add_themes = test script module
+equivalent_modules = Test::Most Moose Moo
+
+[TestingAndDebugging::RequireUseWarnings]
+add_themes = test script module
+equivalent_modules = Test::Most Moose Moo
+
+[ValuesAndExpressions::ProhibitCommaSeparatedStatements]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitComplexVersion]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitConstantPragma]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitEmptyQuotes]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitEscapedCharacters]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitImplicitNewlines]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitInterpolationOfLiterals]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitLeadingZeros]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitLongChainsOfMethodCalls]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitMagicNumbers]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitMismatchedOperators]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitMixedBooleanOperators]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitNoisyQuotes]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitQuotesAsQuotelikeOperatorDelimiters]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitSpecialLiteralHeredocTerminator]
+add_themes = test script module
+
+[ValuesAndExpressions::ProhibitVersionStrings]
+add_themes = test script module
+
+[ValuesAndExpressions::RequireConstantVersion]
+add_themes = test script module
+
+[ValuesAndExpressions::RequireInterpolationOfMetachars]
+add_themes = test script module
+
+[ValuesAndExpressions::RequireNumberSeparators]
+add_themes = test script module
+
+[ValuesAndExpressions::RequireQuotedHeredocTerminator]
+add_themes = test script module
+
+[ValuesAndExpressions::RequireUpperCaseHeredocTerminator]
+add_themes = test script module
+
+[Variables::ProhibitAugmentedAssignmentInDeclaration]
+add_themes = test script module
+
+[Variables::ProhibitConditionalDeclarations]
+add_themes = test script module
+
+[Variables::ProhibitLocalVars]
+add_themes = test script module
+
+[Variables::ProhibitMatchVars]
+add_themes = test script module
+
+[Variables::ProhibitPackageVars]
+add_themes = test script module
+
+[Variables::ProhibitPerl4PackageNames]
+add_themes = test script module
+
+[-Variables::ProhibitPunctuationVars]
+; I _CERTAINLY_ do not agree with this one...
+
+[Variables::ProhibitReusedNames]
+add_themes = test script module
+
+[Variables::ProhibitUnusedVariables]
+add_themes = test script module
+
+[Variables::ProtectPrivateVars]
+add_themes = test script module
+
+[Variables::RequireInitializationForLocalVars]
+add_themes = test script module
+
+[Variables::RequireLexicalLoopIterators]
+add_themes = test script module
+
+[Variables::RequireLocalizedPunctuationVars]
+add_themes = test script module
+
+[Variables::RequireNegativeIndices]
+add_themes = test script module
+

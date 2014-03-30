@@ -118,3 +118,10 @@ map <Leader>hu :call HtmlUnEscape()<Enter>
 set rtp+=~/dot-files/powerline/powerline/bindings/vim
 
 nmap <F8> :TagbarToggle<CR>
+
+"--------------------
+" Syntastic
+let g:syntastic_enable_perl_checker = 1
+au BufRead,BufNewFile *.t let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'test'"
+au BufRead,BufNewFile *.pl let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'script'"
+au BufRead,BufNewFile *.pm let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'module'"
