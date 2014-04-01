@@ -350,6 +350,7 @@ add_themes = test script module
 add_themes = test script module
 
 [ValuesAndExpressions::ProhibitMagicNumbers]
+allowed_values = -1 0 1 2
 add_themes = test script module
 
 [ValuesAndExpressions::ProhibitMismatchedOperators]
