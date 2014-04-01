@@ -34,6 +34,3 @@
 [submodule "tmuxinator"]
 	path = tmuxinator
 	url = http://github.com/aziz/tmuxinator.git
-[submodule "git-subrepo"]
-	path = git-subrepo
-	url = git@github.com:git-commands/git-subrepo
