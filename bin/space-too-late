@@ -3,6 +3,7 @@
 # character too late
 #
 # Usage:
+#   ln -s space-too-late gitp
 #   gitp ush
 #   gitc ommit
 #

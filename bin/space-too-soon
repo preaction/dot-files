@@ -3,6 +3,7 @@
 # character too soon.
 #
 # Usage:
+#   ln -s space-too-soon gi
 #   gi tpush
 #   gi tcommit
 
