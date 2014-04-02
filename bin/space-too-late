@@ -1,0 +1,16 @@
+
+# Space too late. Run the command you wanted to run but you hit the space bar one
+# character too late
+#
+# Usage:
+#   gitp ush
+#   gitc ommit
+#
+# Unlike its counterpart, space too soon, this one must be named differently based
+# on which misspelling you frequently have
+
+MISSPELLED=$(basename $0)
+LETTER=${MISSPELLED: -1}    # Space before '-1' is important!
+COMMAND=${MISSPELLED:0:${#MISSPELLED}-1}
+echo "!!! Space too late! Executing: $COMMAND ${LETTER}$@"
+exec $COMMAND ${LETTER}$@

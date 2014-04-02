@@ -1,0 +1,17 @@
+
+# Space too soon. Run the command you wanted to run but you hit the space bar one
+# character too soon.
+#
+# Usage:
+#   gi tpush
+#   gi tcommit
+
+MISSPELLED=$1
+shift
+LETTER=${MISSPELLED:0:1}
+REST=${MISSPELLED:1}
+# Use basename to ensure looking in PATH again
+# $0 is the full path to this script
+COMMAND="$(basename $0)$LETTER"
+echo "!!! Space too soon! Executing: $COMMAND $REST $@"
+exec $COMMAND $REST $@
