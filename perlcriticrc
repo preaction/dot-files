@@ -358,6 +358,7 @@ add_themes = test script module
 
 [ValuesAndExpressions::ProhibitMixedBooleanOperators]
 add_themes = test script module
+severity = 2
 
 [ValuesAndExpressions::ProhibitNoisyQuotes]
 add_themes = test script module
