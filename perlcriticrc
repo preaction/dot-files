@@ -316,7 +316,7 @@ add_themes = test script module
 
 [TestingAndDebugging::RequireUseStrict]
 add_themes = test script module
-equivalent_modules = Test::Most Moose Moo
+equivalent_modules = Test::Most Moose Moo Qar::Test
 
 [TestingAndDebugging::RequireUseWarnings]
 add_themes = test script module
