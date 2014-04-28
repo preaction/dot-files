@@ -49,6 +49,7 @@ source $ZSH/oh-my-zsh.sh
 #
 
 export EDITOR=vim
+export LESS=RSXin
 
 # Tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
