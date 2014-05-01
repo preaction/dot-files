@@ -46,6 +46,8 @@ set statusline=%a%-40.60(%{fugitive#statusline()}:%-0.45f\ %=%M%R%H%)%=%l/%L#%n"
 
 " Jump to the last position when we open a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" Jump to the first line if we're a git commit message
+au BufReadPost COMMIT_EDITMSG :1
 
 filetype plugin on
 
