@@ -1,0 +1,15 @@
+#!/bin/sh
+
+METHOD=$1
+shift
+CONTENT_TYPE=$1
+shift
+URL=$1
+shift
+
+NO_PROXY=*
+
+COMMAND=$(echo curl -s -X $METHOD --data-binary @- -H \"Content-Type: $CONTENT_TYPE\" $@ $URL)
+#echo $COMMAND
+
+exec $COMMAND
