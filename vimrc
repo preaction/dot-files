@@ -46,6 +46,7 @@ set statusline=%a%-40.60(%{fugitive#statusline()}:%-0.45f\ %=%M%R%H%)%=%l/%L#%n"
 
 " Jump to the last position when we open a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 " Jump to the first line if we're a git commit message
 au BufReadPost COMMIT_EDITMSG :1
 
@@ -89,10 +90,11 @@ au BufRead,BufNewFile *.t set filetype=perl
 
 " Auto wrap only certain files
 au BufRead,BufNewFile * setl nolbr wm=0 tw=0
-au BufRead,BufNewFile *.wiki  setl lbr wm=4 tw=78
-au BufRead,BufNewFile *.rst  setl lbr wm=4 tw=78
-au BufRead,BufNewFile *.txt  setl lbr wm=4 tw=78
-au BufRead,BufNewFile *.md  setl lbr wm=4 tw=78
+au BufRead,BufNewFile *.wiki  setl lbr wm=0 tw=72
+au BufRead,BufNewFile *.rst  setl lbr wm=0 tw=72
+au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72
+au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72
+au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0
 
 "----------------------------------------------------------------------------
 " Macros
