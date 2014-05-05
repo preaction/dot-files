@@ -31,6 +31,6 @@
 [submodule "powerline"]
 	path = powerline
 	url = http://github.com/Lokaltog/powerline.git
-[submodule "tmuxinator"]
-	path = tmuxinator
-	url = http://github.com/aziz/tmuxinator.git
+[submodule "tmuxifier"]
+	path = tmuxifier
+	url = https://github.com/jimeh/tmuxifier.git
