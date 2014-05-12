@@ -8,7 +8,7 @@
 --nooutdent-long-lines
 --nooutdent-labels
 --paren-tightness=0
---square-bracket-tightness=1
+--square-bracket-tightness=0
 --brace-tightness=0
 --block-brace-tightness=0
 --tight-secret-operators
@@ -24,3 +24,6 @@
 --noopening-anonymous-sub-brace-on-new-line
 --vertical-tightness=0
 --comma-arrow-breakpoints=1
+--stack-opening-tokens
+--comma-arrow-breakpoints=0
+--noblanks-before-comments
