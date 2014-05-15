@@ -129,3 +129,4 @@ let g:syntastic_enable_perl_checker = 1
 au BufRead,BufNewFile *.t let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'test'"
 au BufRead,BufNewFile *.pl let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'script'"
 au BufRead,BufNewFile *.pm let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'module'"
+let g:syntastic_javascript_checkers = ['jshint']
