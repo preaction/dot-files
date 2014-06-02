@@ -1,0 +1,1 @@
+ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
