@@ -73,8 +73,8 @@ if [[ -d $HOME/dot-files/git-subrepo/lib ]]; then
     export GIT_EXEC_PATH="$HOME/dot-files/git-subrepo/lib:$(git --exec-path)"
 fi
 
-# Test::Pretty
-export TEST_PRETTY_COLOR_NAME=grey10
+# Test::Pretty. Adjust color for solarized
+export TEST_PRETTY_COLOR_NAME=bright_yellow
 
 # Site-specific customizations
 if [[ -f $HOME/.zshrc.after ]]; then
