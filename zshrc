@@ -68,11 +68,6 @@ if [[ -d $HOME/bin ]]; then
     export PATH=$HOME/bin:$PATH
 fi
 
-# Git-subrepo
-if [[ -d $HOME/dot-files/git-subrepo/lib ]]; then
-    export GIT_EXEC_PATH="$HOME/dot-files/git-subrepo/lib:$(git --exec-path)"
-fi
-
 # Fix git perl scripts in case of local::lib
 # If we install modules for a different arch in local::lib, we'll get some problems
 if [[ -x /usr/bin/perl ]]; then
