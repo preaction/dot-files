@@ -73,6 +73,12 @@ if [[ -d $HOME/dot-files/git-subrepo/lib ]]; then
     export GIT_EXEC_PATH="$HOME/dot-files/git-subrepo/lib:$(git --exec-path)"
 fi
 
+# Fix git perl scripts in case of local::lib
+# If we install modules for a different arch in local::lib, we'll get some problems
+if [[ -x /usr/bin/perl ]]; then
+    export GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib )'`
+fi
+
 # Test::Pretty. Adjust color for solarized
 export TEST_PRETTY_COLOR_NAME=bright_yellow
 
