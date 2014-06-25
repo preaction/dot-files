@@ -5,6 +5,8 @@ filetype plugin indent on
 
 "----------------------------------------------------------------------------
 " Common settings
+" I don't know why, but this fixes a problem with my PuTTY colorscheme
+let g:solarized_termtrans=1
 colorscheme solarized
 set background=dark                 " BLACK AS NIGHT
 set autoindent                      " Auto-indent on
