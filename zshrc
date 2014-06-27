@@ -85,7 +85,7 @@ if [[ -f $HOME/.zshrc.after ]]; then
 fi
 
 # START TMUX SESSION
-if [[ "$TERM" != "screen" && -x `which tmux` ]]; then
+if [[ "$TERM" != "screen" && "$TERM" != "screen-256color" && -x `which tmux` ]]; then
     tmx login
 fi
 
