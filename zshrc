@@ -55,6 +55,9 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 export LESS=RSXin
 
+# git-extras
+export PATH="$HOME/dot-files/git-extras/bin:$PATH"
+
 # Tmuxifier
 export PATH="$HOME/dot-files/tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"

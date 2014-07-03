@@ -37,3 +37,6 @@
 [submodule "oh-my-zsh-custom/plugins/zsh-syntax-highlighting"]
 	path = oh-my-zsh-custom/plugins/zsh-syntax-highlighting
 	url = http://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "git-extras"]
+	path = git-extras
+	url = http://github.com/visionmedia/git-extras.git
