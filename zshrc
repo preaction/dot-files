@@ -44,7 +44,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git cpanm git-extras github zsh-syntax-highlighting)
+plugins=(cpanm git-extras github zsh-syntax-highlighter git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -55,8 +55,13 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 export LESS=RSXin
 
+# Fix git-completion for BofA
+zstyle ':completion:*:*:git:*' script $HOME/dot-files/complete/git-completion.bash
+fpath=($HOME/dot-files/zsh $fpath)
+
 # git-extras
 export PATH="$HOME/dot-files/git-extras/bin:$PATH"
+export MANPATH="$HOME/dot-files/git-extras/man:$MANPATH"
 
 # Tmuxifier
 export PATH="$HOME/dot-files/tmuxifier/bin:$PATH"
