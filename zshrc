@@ -7,6 +7,10 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallifrey"
 
+# Set a custom dir outside of oh-my-zsh
+# This allows us to keep oh-my-zsh as a submodule and still add more stuff
+ZSH_CUSTOM="$HOME/dot-files/oh-my-zsh-custom"
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -40,7 +44,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git cpanm git-extras github zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
