@@ -44,7 +44,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cpanm git-extras github zsh-syntax-highlighter git)
+plugins=(cpanm git-extras github zsh-syntax-highlighting git)
 
 source $ZSH/oh-my-zsh.sh
 
