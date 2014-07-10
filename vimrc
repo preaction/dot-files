@@ -41,6 +41,7 @@ set ignorecase                      " Ignore case by default
 set list                            " Show tabs and EOL
 set listchars=eol:¬,tab:>-,trail:.,extends:»,precedes:«
 set equalprg=perltidy               " Use 'perltidy' when = is pressed
+set cursorline                      " highlight the line the cursor is on
 syntax on                           " Syntax Highlight on
 
 " Status line  [:n]    [git]                      [file]     [flags]   [line,col]  
