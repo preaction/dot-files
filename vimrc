@@ -42,6 +42,7 @@ set list                            " Show tabs and EOL
 set listchars=eol:¬,tab:>-,trail:.,extends:»,precedes:«
 set equalprg=perltidy               " Use 'perltidy' when = is pressed
 set cursorline                      " highlight the line the cursor is on
+set colorcolumn=90                  " highlight the 90th column
 syntax on                           " Syntax Highlight on
 
 " Status line  [:n]    [git]                      [file]     [flags]   [line,col]  
@@ -52,6 +53,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " Jump to the first line if we're a git commit message
 au BufReadPost COMMIT_EDITMSG :1
+
+" A quick macro to remove the last search
+nnoremap <leader><space> :nohl<cr>
 
 filetype plugin on
 
