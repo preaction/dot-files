@@ -13,10 +13,3 @@ __END__
 
 =head1 DESCRIPTION
 
-=head1 ARGUMENTS
-
-=head1 OPTIONS
-
-=head1 ATTRIBUTES
-
-=head1 METHODS
