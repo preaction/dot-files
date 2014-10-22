@@ -1,19 +1,17 @@
-[core]
-	editor = vim
-
 [branch]
-	autosetuprebase = always
+        autosetuprebase = always
 
 [alias]
-	st=status
-	ci=commit -v
+        st=status
+        ci=commit -v
         cp=cherry-pick
+        co=checkout
         l=log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [user]
-	name = Doug Bell
-	email = madcityzen@gmail.com
+        name = Doug Bell
+        email = madcityzen@gmail.com
 [push]
-	default = simple
+        default = simple
 [sendemail]
         smtpencryption = tls
         smtpserver = smtp.gmail.com
