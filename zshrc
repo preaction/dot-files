@@ -91,6 +91,13 @@ export GITPERLLIB
 # Test::Pretty. Adjust color for solarized
 export TEST_PRETTY_COLOR_NAME=bright_yellow
 
+# Less options
+# -F -- Quit if less than a full screen. If less than a full terminal of data, behaves like cat
+# -i -- Case-insensitive search by default (unless there is uppercase in the search string)
+# -n -- No line numbers. If you need line numbers, use /vim?/
+# -Q -- Really Quiet. Will never send a terminal bell ever
+export PAGER="less -FinQ"
+
 # Site-specific customizations
 if [[ -f $HOME/.zshrc.after ]]; then
     source $HOME/.zshrc.after;
