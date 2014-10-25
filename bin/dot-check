@@ -1,28 +1,43 @@
 #!/bin/sh
 
-echo "-- Checking for linters"
+check_bin() {
+    echo "$1 ($2)... \c"
+    which $1 2>/dev/null >/dev/null
+    if [ $? -eq 0 ]; then
+        echo "OK"
+    else
+        echo "FAIL"
+    fi
+}
 
-echo "jshint (JS and HTML)...\c"
-which jshint 2>/dev/null >/dev/null
-if [ $? -eq 0 ]; then
-    echo " OK"
-else
-    echo " FAIL"
-fi
+check_version() {
+    echo "$1 (version $3)... \c"
+    VERSION=$( $1 $2 | perl -lne'/(\d+[.]\d+)/ && print $1 and exit' )
+    if [ $( bc <<< "$VERSION >= $1" ) -eq 1 ]; then
+        echo "OK (found $VERSION)"
+    else
+        echo "FAIL (found $VERSION)"
+    fi
+}
 
-echo "csslint (CSS)...\c"
-which csslint 2>/dev/null >/dev/null
-if [ $? -eq 0 ]; then
-    echo " OK"
-else
-    echo " FAIL"
-fi
+echo "\n-- Checking shell environment"
+check_version "zsh" "--version" "5.0"
+check_version "vim" "--version" "7.3"
+check_version "tmux" "-V" "1.6"
 
-echo "tidy (HTML)...\c"
-which csslint 2>/dev/null >/dev/null
-if [ $? -eq 0 ]; then
-    echo " OK"
-else
-    echo " FAIL"
-fi
+echo "\n-- Checking for linters"
+check_bin "jshint" "JS and HTML"
+check_bin "csslint" "JS and HTML"
+check_bin "tidy" "HTML"
+
+echo "\n-- Checking for python environment"
+check_bin "pip" "Python package installer"
+check_bin "pylint" "Python linter"
+check_bin "pyflakes" "Python linter"
+check_bin "pew" "Python environment manager"
+
+echo "\n-- Checking for perl environment"
+check_bin "perltidy" "Perl formatter"
+check_bin "perlcritic" "Perl linter"
+check_bin "perlbrew" "Perl environment manager"
 
