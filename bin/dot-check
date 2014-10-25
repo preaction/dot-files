@@ -1,0 +1,28 @@
+#!/bin/sh
+
+echo "-- Checking for linters"
+
+echo "jshint (JS and HTML)...\c"
+which jshint 2>/dev/null >/dev/null
+if [ $? -eq 0 ]; then
+    echo " OK"
+else
+    echo " FAIL"
+fi
+
+echo "csslint (CSS)...\c"
+which csslint 2>/dev/null >/dev/null
+if [ $? -eq 0 ]; then
+    echo " OK"
+else
+    echo " FAIL"
+fi
+
+echo "tidy (HTML)...\c"
+which csslint 2>/dev/null >/dev/null
+if [ $? -eq 0 ]; then
+    echo " OK"
+else
+    echo " FAIL"
+fi
+
