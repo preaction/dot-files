@@ -1,0 +1,17 @@
+
+if [ ! -e $HOME/dot-files ]; then
+    echo "Dotfiles not installed in $HOME/dot-files"
+    exit 1
+fi
+
+DOTFILES="dzil gitconfig gitignore perlcriticrc perltidyrc proverc tmux.conf\
+    tmuxifier vim vimrc zshrc jshintrc"
+
+for DOTFILE in $DOTFILES; do
+    if [ -e "$HOME/.$DOTFILE" ] || [ -d "$HOME/.$DOTFILE" ]; then
+        echo "$HOME/.$DOTFILE exists. Not installing..."
+    else
+        ln -s "$HOME/dot-files/$DOTFILE" "$HOME/.$DOTFILE"
+    fi
+done
+
