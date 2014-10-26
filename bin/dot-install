@@ -4,6 +4,10 @@ if [ ! -e $HOME/dot-files ]; then
     exit 1
 fi
 
+# Make sure the submodules are up-to-date
+export GIT_WORK_TREE=$HOME/dot-files
+git submodule update --init
+
 DOTFILES="dzil gitconfig gitignore perlcriticrc perltidyrc proverc tmux.conf\
     tmuxifier vim vimrc zshrc jshintrc"
 
