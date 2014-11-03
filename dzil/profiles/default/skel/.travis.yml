@@ -11,7 +11,7 @@ perl:
 
 matrix:
     include:
-        - perl: 5.18
+        - perl: "5.18"
           env: COVERAGE=1
     allow_failures:
         - perl: "blead"
