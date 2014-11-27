@@ -55,6 +55,9 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 export LESS=RSXin
 
+alias :e=$EDITOR
+alias :q=exit
+
 # Fix git-completion for BofA
 zstyle ':completion:*:*:git:*' script $HOME/dot-files/complete/git-completion.bash
 fpath=($HOME/dot-files/zsh $fpath)
