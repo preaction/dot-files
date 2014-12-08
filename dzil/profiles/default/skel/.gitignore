@@ -2,4 +2,4 @@
 *.swp
 *.tar.gz
 .DS_Store
-{{$dist->name}}-*
+/{{$dist->name}}-*
