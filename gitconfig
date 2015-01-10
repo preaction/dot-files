@@ -10,6 +10,9 @@
         cp=cherry-pick
         co=checkout
         l=log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+        theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+
 [user]
         name = Doug Bell
         email = madcityzen@gmail.com
@@ -20,3 +23,5 @@
         smtpserver = smtp.gmail.com
         smtpuser = madcityzen@gmail.com
         smtpserverport = 587
+[diff]
+        algorithm = patience
