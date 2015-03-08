@@ -129,8 +129,8 @@ add_themes = test script module
 [InputOutput::ProhibitBarewordFileHandles]
 add_themes = test script module
 
-[InputOutput::ProhibitExplicitStdin]
-add_themes = test script module
+[-InputOutput::ProhibitExplicitStdin]
+; I know what I'm doing, thanks
 
 [InputOutput::ProhibitInteractiveTest]
 add_themes = test script module
