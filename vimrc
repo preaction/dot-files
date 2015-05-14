@@ -92,8 +92,9 @@ let g:git_branch_status_head_current=1      " Only current head
 au BufRead,BufNewFile *.as   setl filetype=actionscript
 au BufRead,BufNewFile *.mxml setl filetype=mxml
 
-" Perl .t files
+" Perl files
 au BufRead,BufNewFile *.t set filetype=perl
+au BufRead,BufNewFile Rexfile set filetype=perl
 
 " Auto wrap only certain files
 au BufRead,BufNewFile * setl nolbr wm=0 tw=0
