@@ -43,6 +43,7 @@ set listchars=eol:¬,tab:>-,trail:.,extends:»,precedes:«
 set equalprg=perltidy               " Use 'perltidy' when = is pressed
 set cursorline                      " highlight the line the cursor is on
 set colorcolumn=90                  " highlight the 90th column
+set tags+=,./.tags,.tags            " Allow hidden tags files
 syntax on                           " Syntax Highlight on
 
 " Status line  [:n]    [git]                      [file]     [flags]   [line,col]  

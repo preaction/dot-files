@@ -48,6 +48,7 @@ Thumbs.db
 *.bak
 *\#
 perltidy.ERR
+.tags
 
 # Custom environments and installed modules #
 #############################################
