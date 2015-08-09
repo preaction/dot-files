@@ -103,6 +103,7 @@ au BufRead,BufNewFile *.wiki  setl lbr wm=0 tw=72
 au BufRead,BufNewFile *.rst  setl lbr wm=0 tw=72
 au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72
 au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72
+au BufRead,BufNewFile *.markdown  setl lbr wm=0 tw=72
 au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0
 
 "----------------------------------------------------------------------------
