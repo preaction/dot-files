@@ -1,5 +1,3 @@
 .build
-*.swp
 *.tar.gz
-.DS_Store
 /{{$dist->name}}-*
