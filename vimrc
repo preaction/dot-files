@@ -99,15 +99,21 @@ au BufRead,BufNewFile *.mxml setl filetype=mxml
 " Perl files
 au BufRead,BufNewFile *.t set filetype=perl
 au BufRead,BufNewFile Rexfile set filetype=perl
+au BufRead,BufNewFile cpanfile set filetype=perl
 
-" Auto wrap only certain files
-au BufRead,BufNewFile * setl nolbr wm=0 tw=0
-au BufRead,BufNewFile *.wiki  setl lbr wm=0 tw=72
-au BufRead,BufNewFile *.rst  setl lbr wm=0 tw=72
-au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72
-au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72
-au BufRead,BufNewFile *.markdown  setl lbr wm=0 tw=72
-au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0
+" Auto wrap text only in certain files
+" See :help fo-table
+" Auto wrap comments everywhere
+set formatoptions+=j1cl
+set formatoptions-=o
+set tw=72
+au BufRead,BufNewFile * setl nolbr wm=0 tw=72
+au BufRead,BufNewFile *.wiki  setl lbr wm=0 tw=72 fo+=t
+au BufRead,BufNewFile *.rst  setl lbr wm=0 tw=72 fo+=t
+au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72 fo+=t
+au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72 fo+=t
+au BufRead,BufNewFile *.markdown  setl lbr wm=0 tw=72 fo+=t
+au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0 fo+=t
 
 "----------------------------------------------------------------------------
 " Macros
