@@ -17,7 +17,7 @@
         name = Doug Bell
         email = madcityzen@gmail.com
 [push]
-        default = simple
+        default = current
 [sendemail]
         smtpencryption = tls
         smtpserver = smtp.gmail.com
@@ -25,3 +25,5 @@
         smtpserverport = 587
 [diff]
         algorithm = patience
+[merge]
+	tool = vimdiff
