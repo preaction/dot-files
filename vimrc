@@ -58,6 +58,9 @@ au BufReadPost COMMIT_EDITMSG :1
 " A quick macro to remove the last search
 nnoremap <leader><space> :nohl<cr>
 
+" Always add a "lib" directory to the path
+set path+=lib
+
 filetype plugin on
 
 set guioptions-=e
