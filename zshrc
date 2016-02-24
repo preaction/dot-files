@@ -105,9 +105,3 @@ export PAGER="less -FinQ"
 if [[ -f $HOME/.zshrc.after ]]; then
     source $HOME/.zshrc.after;
 fi
-
-# START TMUX SESSION
-if [[ "$TERM" != "screen" && "$TERM" != "screen-256color" && -x `which tmux` ]]; then
-    tmx login
-fi
-
