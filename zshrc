@@ -63,7 +63,7 @@ zstyle ':completion:*:*:git:*' script $HOME/dot-files/complete/git-completion.ba
 fpath=($HOME/dot-files/zsh $fpath)
 
 # git-extras
-export PATH="$HOME/dot-files/git-extras/bin:$PATH"
+export PATH="$HOME/dot-files/git-extras/bin:$HOME/dot-files/powerline/scripts:$PATH"
 export MANPATH="$HOME/dot-files/git-extras/man:$MANPATH"
 
 # Tmuxifier
@@ -76,11 +76,25 @@ bindkey -v
 bindkey -e
 
 # Bin scripts
+if [[ -d /usr/local/bin ]]; then
+    export PATH=/usr/local/bin:$PATH
+fi
+if [[ -d /usr/local/sbin ]]; then
+    export PATH=/usr/local/sbin:$PATH
+fi
 if [[ -d $HOME/dot-files/bin ]]; then
     export PATH=$HOME/dot-files/bin:$PATH
 fi
 if [[ -d $HOME/bin ]]; then
     export PATH=$HOME/bin:$PATH
+fi
+if [[ -d $HOME/perl5/bin ]]; then
+    export PATH=$HOME/perl5/bin:$PATH
+fi
+
+# Source perlbrew if installed
+if [[ -e $HOME/perl5/perlbrew/etc/bashrc ]]; then
+    source $HOME/perl5/perlbrew/etc/bashrc
 fi
 
 # Fix git perl scripts in case of local::lib
@@ -92,7 +106,7 @@ fi
 export GITPERLLIB
 
 # Test::Pretty. Adjust color for solarized
-export TEST_PRETTY_COLOR_NAME=bright_yellow
+export TEST_PRETTY_COLOR_NAME=Bright_Blue
 
 # Less options
 # -F -- Quit if less than a full screen. If less than a full terminal of data, behaves like cat
