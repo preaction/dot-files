@@ -9,7 +9,7 @@ export GIT_WORK_TREE=$HOME/dot-files
 git submodule update --init
 
 DOTFILES="dzil gitconfig gitignore perlcriticrc perltidyrc proverc tmux.conf\
-    tmuxifier vim vimrc zshrc jshintrc"
+    tmuxifier vim vimrc zshrc jshintrc oh-my-zsh"
 
 for DOTFILE in $DOTFILES; do
     if [ -e "$HOME/.$DOTFILE" ] || [ -d "$HOME/.$DOTFILE" ]; then
