@@ -25,5 +25,6 @@
         smtpserverport = 587
 [diff]
         algorithm = patience
+        compactionHeuristic = true
 [merge]
 	tool = vimdiff
