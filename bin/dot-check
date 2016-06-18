@@ -38,6 +38,6 @@ check_bin "pew" "Python environment manager"
 
 echo "\n-- Checking for perl environment"
 check_bin "perltidy" "Perl formatter"
-check_bin "perlcritic" "Perl linter"
+#check_bin "perlcritic" "Perl linter"
 check_bin "perlbrew" "Perl environment manager"
 
