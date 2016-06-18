@@ -150,11 +150,3 @@ let g:syntastic_perl_checkers = ['perl']
 "au BufRead,BufNewFile *.pl let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'script'"
 "au BufRead,BufNewFile *.pm let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'module'"
 let g:syntastic_javascript_checkers = ['eslint']
-
-"--------------------
-" Client additions
-
-" Moon DSL files
-au BufRead,BufNewFile *.moon setl filetype=perl
-au BufRead,BufNewFile *.moon.* setl filetype=perl
-
