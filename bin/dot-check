@@ -26,7 +26,7 @@ check_version "vim" "--version" "7.3"
 check_version "tmux" "-V" "1.6"
 
 echo "\n-- Checking for linters"
-check_bin "jshint" "JS and HTML"
+check_bin "eshint" "JS and HTML"
 check_bin "csslint" "JS and HTML"
 check_bin "tidy" "HTML"
 
