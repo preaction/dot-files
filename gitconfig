@@ -27,4 +27,4 @@
         algorithm = patience
         compactionHeuristic = true
 [merge]
-	tool = vimdiff
+        tool = vimdiff
