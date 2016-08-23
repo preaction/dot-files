@@ -48,6 +48,8 @@ Thumbs.db
 *\#
 perltidy.ERR
 .tags
+# Local project vimrc files
+.vimrc
 
 # Custom environments and installed modules #
 #############################################
