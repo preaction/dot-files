@@ -3,6 +3,10 @@ call pathogen#runtime_append_all_bundles()
 " Load plugins
 filetype plugin indent on
 
+" Allow project-specific vimrc
+set exrc
+set secure
+
 "----------------------------------------------------------------------------
 " Common settings
 " I don't know why, but this fixes a problem with my PuTTY colorscheme
