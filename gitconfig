@@ -15,14 +15,9 @@
 
 [user]
         name = Doug Bell
-        email = madcityzen@gmail.com
+        email = doug@preaction.me
 [push]
         default = current
-[sendemail]
-        smtpencryption = tls
-        smtpserver = smtp.gmail.com
-        smtpuser = madcityzen@gmail.com
-        smtpserverport = 587
 [diff]
         algorithm = patience
         compactionHeuristic = true
