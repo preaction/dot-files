@@ -1,5 +1,5 @@
 package {{$name}};
-
+our $VERSION = '0.001';
 # ABSTRACT: Write a sentence about what it does
 
 =head1 SYNOPSIS
