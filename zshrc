@@ -115,6 +115,8 @@ export TEST_PRETTY_COLOR_NAME=Bright_Blue
 # -Q -- Really Quiet. Will never send a terminal bell ever
 export PAGER="less -FinQ"
 
+export TMUXIFIER_LAYOUT_PATH="$HOME/dot-files/tmuxifier-layouts"
+
 # Site-specific customizations
 if [[ -f $HOME/.zshrc.after ]]; then
     source $HOME/.zshrc.after;
