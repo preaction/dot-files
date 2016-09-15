@@ -1,4 +1,22 @@
-call pathogen#runtime_append_all_bundles()
+
+" Load Vundles
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'Yggdroot/indentLine'
+Plugin 'kien/ctrlp.vim'
+Plugin 'yko/mojo.vim'
+
+call vundle#end()
 
 " Load plugins
 filetype plugin indent on

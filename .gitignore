@@ -1,4 +1,5 @@
 vim/.*
+vim/bundle/*
 tags
 .DS_Store
 *.swp
