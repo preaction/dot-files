@@ -12,7 +12,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
 Plugin 'kien/ctrlp.vim'
 Plugin 'yko/mojo.vim'
 
@@ -113,6 +113,10 @@ let g:git_branch_status_nogit=""            " Nothing if not git repo
 let g:git_branch_status_around=""           " Nothing around branch
 "let g:git_branch_status_ignore_remotes=1    " No remote checking
 let g:git_branch_status_head_current=1      " Only current head
+
+" Do not conceal JSON quotes because are you fucking kidding me?
+"let g:vim_json_syntax_conceal=0
+"let g:indentLine_noConcealCursor="nc"
 
 " Actionscript files
 au BufRead,BufNewFile *.as   setl filetype=actionscript
