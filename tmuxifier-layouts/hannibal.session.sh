@@ -12,10 +12,10 @@ if initialize_session "hannibal"; then
   new_window "app"
   tmux split-window -t "$session:$window.0" -v -p 50
   tmux split-window -t "$session:$window.0" -h -p 50
-  tmux split-window -t "$session:$window.1" -h -p 50
+  tmux split-window -t "$session:$window.2" -h -p 50
   tmux send-keys -t "$session:$window.0" C-z "cd $session_root; postgres -D db" Enter
   tmux send-keys -t "$session:$window.1" C-z "cd $session_root; elasticsearch" Enter
-  tmux send-keys -t "$session:$window.3" C-z "cd $session_root; carton exec morbo script/hannibal" Enter
+  tmux send-keys -t "$session:$window.2" C-z "cd $session_root; carton exec morbo script/hannibal" Enter
 
   # Load a defined window layout.
   #load_window "example"
