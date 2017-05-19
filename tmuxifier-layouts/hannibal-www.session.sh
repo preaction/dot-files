@@ -15,7 +15,7 @@ if initialize_session "hannibal-www"; then
   tmux split-window -t "$session:$window.2" -h -p 50
   tmux send-keys -t "$session:$window.0" C-z "cd $session_root; postgres -D db" Enter
   tmux send-keys -t "$session:$window.1" C-z "cd $session_root; elasticsearch" Enter
-  tmux send-keys -t "$session:$window.2" C-z "cd $session_root/../hannibal-cia; carton exec morbo script/hannibal -l http://*:3000" Enter
+  tmux send-keys -t "$session:$window.2" C-z "cd $session_root/../hannibal-cia; carton exec morbo script/cia-public -l http://*:3000" Enter
   tmux send-keys -t "$session:$window.3" C-z "cd $session_root; carton exec morbo script/hannibal-www -l http://*:3001" Enter
 
   # Load a defined window layout.
