@@ -62,7 +62,6 @@ set showtabline=2                   " Always show tab bar
 set ignorecase                      " Ignore case by default
 set list                            " Show tabs and EOL
 set listchars=eol:¬,tab:>-,trail:.,extends:»,precedes:«
-set equalprg=perltidy               " Use 'perltidy' when = is pressed
 set cursorline                      " highlight the line the cursor is on
 set colorcolumn=90                  " highlight the 90th column
 set tags+=,./.tags,.tags            " Allow hidden tags files
@@ -101,6 +100,8 @@ au BufRead,BufNewFile *.pl setl equalprg=perltidy
 au BufRead,BufNewFile *.pm setl equalprg=perltidy
 au BufRead,BufNewFile *.t setl equalprg=perltidy
 
+au BufRead,BufNewFile *.xml setl equalprg=tidy\ -xml\ -q\ -i\ -w\ 100
+
 "----------------------------------------------------------------------------
 " Module settings
 
@@ -121,6 +122,9 @@ let g:git_branch_status_head_current=1      " Only current head
 " Actionscript files
 au BufRead,BufNewFile *.as   setl filetype=actionscript
 au BufRead,BufNewFile *.mxml setl filetype=mxml
+
+" .vue files
+au BufRead,BufNewFile *.vue set filetype=html
 
 " Perl files
 au BufRead,BufNewFile *.t set filetype=perl
