@@ -30,7 +30,7 @@ set secure
 " I don't know why, but this fixes a problem with my PuTTY colorscheme
 let g:solarized_termtrans=1
 colorscheme solarized
-set background=dark                 " BLACK AS NIGHT
+set background=light
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
 set tabstop=8                       " Use 8 spaces for tabs
