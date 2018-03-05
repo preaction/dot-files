@@ -15,6 +15,7 @@ Plugin 'tpope/vim-commentary'
 "Plugin 'Yggdroot/indentLine'
 Plugin 'kien/ctrlp.vim'
 Plugin 'yko/mojo.vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 
