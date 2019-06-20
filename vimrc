@@ -18,8 +18,15 @@ Plugin 'yko/mojo.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'fatih/vim-go'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'edkolev/tmuxline.vim'
 
 call vundle#end()
+
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "solarized"
 
 " Load plugins
 filetype plugin indent on
@@ -150,6 +157,7 @@ au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.markdown  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0 fo+=t
+au BufRead,BufNewFile *.go set nolist sw=4 tw=4 noai noet ts=4
 
 "----------------------------------------------------------------------------
 " Macros
@@ -171,12 +179,6 @@ function! HtmlUnEscape()
   silent s/&amp;/\&/eg
 endfunction
 map <Leader>hu :call HtmlUnEscape()<Enter>
-
-"--------------------
-" Powerline
-set rtp+=~/dot-files/powerline/powerline/bindings/vim
-
-nmap <F8> :TagbarToggle<CR>
 
 "--------------------
 " Syntastic
