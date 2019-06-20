@@ -12,6 +12,7 @@
         l=log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
         theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+        since = !git log $@ --reverse $(git describe --tags --abbrev=0)..HEAD
 
 [user]
         name = Doug Bell
@@ -23,3 +24,10 @@
         compactionHeuristic = true
 [merge]
         tool = vimdiff
+[log]
+    mailmap = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
