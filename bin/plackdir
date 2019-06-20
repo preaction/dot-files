@@ -9,6 +9,11 @@ sub locate_file
     my ($self, $env) = @_;
     my $path         = $env->{PATH_INFO} || '';
 
+    my $rel_path = join '/', $self->root, substr $path, 1;
+    if ( $rel_path && -d $rel_path && $path !~ m{/$} ) {
+        return [ 302, [ Location => $env->{PATH_INFO} . '/' ], [] ];
+    }
+
     return $self->SUPER::locate_file( $env ) unless $path && $path =~ m{/$};
     $env->{PATH_INFO} .= 'index.html';
     return $self->SUPER::locate_file( $env );
