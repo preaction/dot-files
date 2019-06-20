@@ -16,6 +16,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'kien/ctrlp.vim'
 Plugin 'yko/mojo.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -31,7 +33,7 @@ set secure
 " I don't know why, but this fixes a problem with my PuTTY colorscheme
 let g:solarized_termtrans=1
 colorscheme solarized
-set background=light
+set background=dark
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
 set tabstop=8                       " Use 8 spaces for tabs
@@ -105,6 +107,9 @@ au BufRead,BufNewFile *.xml setl equalprg=tidy\ -xml\ -q\ -i\ -w\ 100
 
 "----------------------------------------------------------------------------
 " Module settings
+
+" Ctrl+P
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|db\|blib'
 
 " Perlhelp
 let perl_include_pod=1
@@ -188,3 +193,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 " Moon DSL files
 au BufRead,BufNewFile *.moon setl filetype=perl
 au BufRead,BufNewFile *.moon.* setl filetype=perl
+
+" TEMPORARY
+"set background=light
+"set nolist
