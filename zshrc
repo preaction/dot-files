@@ -72,8 +72,9 @@ eval "$(tmuxifier init -)"
 
 # Vi keybindings
 bindkey -v
+bindkey "^R" history-incremental-search-backward
 # Emacs keybindings
-bindkey -e
+#bindkey -e
 
 # Bin scripts
 if [[ -d /usr/local/bin ]]; then
