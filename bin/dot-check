@@ -1,7 +1,7 @@
 #!/bin/sh
 
 check_bin() {
-    echo "$1 ($2)... \c"
+    echo -en "$1 ($2)... \c"
     which $1 2>/dev/null >/dev/null
     if [ $? -eq 0 ]; then
         echo "OK"
@@ -11,7 +11,7 @@ check_bin() {
 }
 
 check_version() {
-    echo "$1 (version $3)... \c"
+    echo -en "$1 (version $3)... \c"
     VERSION=$( $1 $2 | perl -lne'/(\d+[.]\d+)/ && print $1 and exit' )
     if [ $( bc <<< "$VERSION >= $1" ) -eq 1 ]; then
         echo "OK (found $VERSION)"
@@ -20,23 +20,23 @@ check_version() {
     fi
 }
 
-echo "\n-- Checking shell environment"
+echo -e "\n-- Checking shell environment"
 check_version "zsh" "--version" "5.0"
 check_version "vim" "--version" "7.3"
 check_version "tmux" "-V" "1.6"
 
-echo "\n-- Checking for linters"
+echo -e "\n-- Checking for linters"
 check_bin "eshint" "JS and HTML"
 check_bin "csslint" "JS and HTML"
 check_bin "tidy" "HTML"
 
-echo "\n-- Checking for python environment"
+echo -e "\n-- Checking for python environment"
 check_bin "pip" "Python package installer"
 check_bin "pylint" "Python linter"
 check_bin "pyflakes" "Python linter"
 check_bin "pew" "Python environment manager"
 
-echo "\n-- Checking for perl environment"
+echo -e "\n-- Checking for perl environment"
 check_bin "perltidy" "Perl formatter"
 #check_bin "perlcritic" "Perl linter"
 check_bin "perlbrew" "Perl environment manager"
