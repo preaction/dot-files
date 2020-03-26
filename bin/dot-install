@@ -8,18 +8,20 @@ fi
 export GIT_WORK_TREE=$HOME/dot-files
 git submodule update --init
 
-DOTFILES="dzil gitconfig gitignore perlcriticrc perltidyrc proverc tmux.conf\
-    tmux tmuxifier vim vimrc zshrc jshintrc oh-my-zsh"
+DOTFILES="dzil gitconfig gitignore perlcriticrc perltidyrc proverc tmux.conf \
+    tmux tmuxifier vim/after vim/autoload vim/bundle vim/colors vim/doc \
+    vim/indent vim/plugin vim/syntax vimrc zshrc jshintrc oh-my-zsh"
 
 for DOTFILE in $DOTFILES; do
     if [ -e "$HOME/.$DOTFILE" ] || [ -d "$HOME/.$DOTFILE" ]; then
         echo "$HOME/.$DOTFILE exists. Not installing..."
+        diff -u $HOME/.$DOTFILE $DOTFILE
     else
         ln -s "$HOME/dot-files/$DOTFILE" "$HOME/.$DOTFILE"
     fi
 done
 
-CONFIGDIRS="powerline"
+CONFIGDIRS=""
 for DIR in $CONFIGDIRS; do
     if [ -e "$HOME/.config/$DIR" ]; then
         echo "$HOME/.config/$DIR exists. Not installing..."

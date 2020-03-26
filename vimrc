@@ -73,8 +73,8 @@ set ignorecase                      " Ignore case by default
 set list                            " Show tabs and EOL
 set listchars=eol:¬,tab:>-,trail:.,extends:»,precedes:«
 set cursorline                      " highlight the line the cursor is on
-set colorcolumn=90                  " highlight the 90th column
 set tags+=,./.tags,.tags            " Allow hidden tags files
+set directory=~/.vim/swapfiles//    " Move swapfiles out of the current directory
 syntax on                           " Syntax Highlight on
 
 " Status line  [:n]    [git]                      [file]     [flags]   [line,col]  
@@ -93,11 +93,6 @@ nnoremap <leader><space> :nohl<cr>
 set path+=lib
 
 filetype plugin on
-
-set guioptions-=e
-set guioptions-=T
-set guioptions+=ac
-set guifont=DejaVuSansMonoForPowerline:h12
 
 " Use ack for :grep
 set grepprg=ack
@@ -190,12 +185,13 @@ let g:syntastic_perl_checkers = ['perl']
 let g:syntastic_javascript_checkers = ['eslint']
 
 "--------------------
-" Client additions
+" trackperlvars
+highlight! TRACK_PERL_VAR ctermfg=NONE ctermbg=NONE cterm=underline gui=underline guifg=NONE guibg=NONE
 
-" Moon DSL files
-au BufRead,BufNewFile *.moon setl filetype=perl
-au BufRead,BufNewFile *.moon.* setl filetype=perl
 
-" TEMPORARY
-"set background=light
-"set nolist
+
+" Allow machine-specific overrides
+if !empty(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
