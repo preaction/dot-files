@@ -40,7 +40,7 @@ set secure
 " I don't know why, but this fixes a problem with my PuTTY colorscheme
 let g:solarized_termtrans=1
 colorscheme solarized
-set background=dark
+set background=light
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
 set tabstop=8                       " Use 8 spaces for tabs
@@ -71,7 +71,6 @@ set fileformats=unix,dos            " File formats
 set showtabline=2                   " Always show tab bar
 set ignorecase                      " Ignore case by default
 set list                            " Show tabs and EOL
-set listchars=eol:¬,tab:>-,trail:.,extends:»,precedes:«
 set cursorline                      " highlight the line the cursor is on
 set tags+=,./.tags,.tags            " Allow hidden tags files
 set directory=~/.vim/swapfiles//    " Move swapfiles out of the current directory
