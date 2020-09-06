@@ -33,3 +33,4 @@ for DIR in $CONFIGDIRS; do
     fi
 done
 
+mkdir -p ~/.vim/swapfiles
