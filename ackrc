@@ -1,0 +1,4 @@
+--ignore-directory=vendor
+--ignore-directory=node_modules
+--ignore-directory=dist
+--ignore-directory=compose/cdn/container/files
