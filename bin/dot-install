@@ -11,7 +11,7 @@ git submodule update --init
 DOTFILES="dzil gitconfig gitignore perlcriticrc perltidyrc proverc tmux.conf \
     tmux tmuxifier vim/after vim/autoload vim/bundle vim/colors vim/doc \
     vim/indent vim/plugin vim/syntax vimrc zshrc jshintrc oh-my-zsh \
-    bash_profile"
+    bash_profile inputrc editrc curlrc ackrc"
 
 for DOTFILE in $DOTFILES; do
     if [ -e "$HOME/.$DOTFILE" ] || [ -d "$HOME/.$DOTFILE" ]; then

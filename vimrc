@@ -21,6 +21,7 @@ Plugin 'fatih/vim-go'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'jamessan/vim-gnupg'
 
 call vundle#end()
 
@@ -39,6 +40,7 @@ set secure
 " Common settings
 " I don't know why, but this fixes a problem with my PuTTY colorscheme
 let g:solarized_termtrans=1
+let mapleader = ","
 colorscheme solarized
 set background=light
 set autoindent                      " Auto-indent on
@@ -97,7 +99,8 @@ filetype plugin on
 set grepprg=ack
 
 " Make a . repeat for :
-map <Leader>. @:
+map <Leader>. :lnext<cr>
+map <Leader>, :lprev<cr>
 
 " use perltidy for .pl, .pm, and .t
 au BufRead,BufNewFile *.pl setl equalprg=perltidy
@@ -151,7 +154,7 @@ au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.markdown  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0 fo+=t
-au BufRead,BufNewFile *.go set nolist sw=4 tw=4 noai noet ts=4
+au BufRead,BufNewFile *.go set nolist sw=4 noai noet ts=4
 
 "----------------------------------------------------------------------------
 " Macros
@@ -193,4 +196,25 @@ highlight! TRACK_PERL_VAR ctermfg=NONE ctermbg=NONE cterm=underline gui=underlin
 if !empty(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
+"--------------------
+" vim-go
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go setl equalprg="go fmt"
+autocmd Filetype go nmap <leader>aa :call go#alternate#Switch(0, 'edit')<CR>
+autocmd Filetype go nmap <leader>av :call go#alternate#Switch(0, 'vsplit')<CR>
+autocmd Filetype go nmap <leader>as :call go#alternate#Switch(0, 'split')<CR>
+let g:go_test_timeout='60s'
 
