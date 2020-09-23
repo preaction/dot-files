@@ -3,7 +3,8 @@ export OSH=/home/dbell/dot-files/oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="powerline"
+OSH_THEME="powerline-multiline"
+export THEME_CHECK_SUDO=false
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

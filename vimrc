@@ -42,7 +42,7 @@ set secure
 let g:solarized_termtrans=1
 let mapleader = ","
 colorscheme solarized
-set background=light
+set background=dark
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
 set tabstop=8                       " Use 8 spaces for tabs
