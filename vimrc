@@ -5,13 +5,13 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
 "Plugin 'Yggdroot/indentLine'
 Plugin 'kien/ctrlp.vim'
 Plugin 'yko/mojo.vim'
@@ -87,11 +87,14 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Jump to the first line if we're a git commit message
 au BufReadPost COMMIT_EDITMSG :1
 
+" Leave paste mode after one paste
+au InsertLeave * set nopaste
+
 " A quick macro to remove the last search
 nnoremap <leader><space> :nohl<cr>
 
-" Always add a "lib" directory to the path
-set path+=lib
+" Always add some common directories to the path
+set path+=lib,t/lib,t/tests
 
 filetype plugin on
 
@@ -99,8 +102,10 @@ filetype plugin on
 set grepprg=ack
 
 " Make a . repeat for :
-map <Leader>. :lnext<cr>
-map <Leader>, :lprev<cr>
+map <Leader>. :cnext<cr>
+map <Leader>, :cprev<cr>
+map <Leader>> :lnext<cr>
+map <Leader>< :lprev<cr>
 
 " use perltidy for .pl, .pm, and .t
 au BufRead,BufNewFile *.pl setl equalprg=perltidy
@@ -113,7 +118,7 @@ au BufRead,BufNewFile *.xml setl equalprg=tidy\ -xml\ -q\ -i\ -w\ 100
 " Module settings
 
 " Ctrl+P
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|db\|blib'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\/\.git\/\|\/db\/\|blib'
 
 " Perlhelp
 let perl_include_pod=1
