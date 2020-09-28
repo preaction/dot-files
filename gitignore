@@ -3,6 +3,7 @@
 # it's better to store source and build these, or use submodules
 # or subtrees
 *.com
+!*.com/
 *.class
 *.dll
 *.exe
