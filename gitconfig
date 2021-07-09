@@ -2,7 +2,7 @@
         excludesfile = ~/.gitignore
 
 [branch]
-        autosetuprebase = always
+        autosetuprebase = never
 
 [alias]
         st=status
@@ -36,3 +36,5 @@
 [url "git@gitc.grantstreet.com:"]
 	insteadof = https://gitc.grantstreet.com/
 	insteadof = git://gitc.grantstreet.com/
+[diff "gpg"]
+	textconv = gpg --no-tty --decrypt

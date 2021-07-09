@@ -5,6 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
@@ -22,6 +23,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'jamessan/vim-gnupg'
+Plugin 'prabirshrestha/vim-lsp'
 
 call vundle#end()
 
@@ -195,7 +197,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 " trackperlvars
 highlight! TRACK_PERL_VAR ctermfg=NONE ctermbg=NONE cterm=underline gui=underline guifg=NONE guibg=NONE
 
-
+nmap <space> :
+iab ,, =>
 
 " Allow machine-specific overrides
 if !empty(glob("~/.vimrc.local"))
@@ -223,3 +226,38 @@ autocmd Filetype go nmap <leader>av :call go#alternate#Switch(0, 'vsplit')<CR>
 autocmd Filetype go nmap <leader>as :call go#alternate#Switch(0, 'split')<CR>
 let g:go_test_timeout='60s'
 
+"------------------------------------------------------------------------
+" Language Server
+if executable('pls')
+    au User lsp_setup call lsp#register_server({
+                \ 'name': 'pls',
+                \ 'cmd': {server_info->['pls']},
+                \ 'allowlist': ['perl'],
+                \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END

@@ -30,6 +30,7 @@
 *.log
 *.sqlite
 *.db
+*.db-{shm,wal}
 
 # OS generated files #
 ######################

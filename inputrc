@@ -1,1 +1,3 @@
 set editing-mode vi
+TAB: menu-complete
+"\e[Z": menu-complete-backward
