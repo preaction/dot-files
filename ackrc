@@ -1,0 +1,7 @@
+--follow
+--ignore-directory=vendor
+--ignore-directory=node_modules
+--ignore-directory=dist
+--ignore-directory=.yarn
+--ignore-file=firstlinematch:^(?:[/]\*\*+[/]\s*)?\(function\(
+--pager="less"

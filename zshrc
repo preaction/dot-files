@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 #
 
 export EDITOR=vim
-export LESS=RSXin
+export LESS=RSXine~
 
 alias :e=$EDITOR
 alias :q=exit

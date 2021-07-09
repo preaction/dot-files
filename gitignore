@@ -3,6 +3,7 @@
 # it's better to store source and build these, or use submodules
 # or subtrees
 *.com
+!*.com/
 *.class
 *.dll
 *.exe
@@ -29,6 +30,7 @@
 *.log
 *.sqlite
 *.db
+*.db-{shm,wal}
 
 # OS generated files #
 ######################
@@ -39,6 +41,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+.nfs*
 
 # Editor-generated files #
 ##########################

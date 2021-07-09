@@ -8,7 +8,8 @@ set secure
 
 "----------------------------------------------------------------------------
 " Common settings
-colorscheme default
+colorscheme solarized
+set bg=light
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
 set tabstop=8                       " Use 8 spaces for tabs
@@ -39,7 +40,7 @@ set fileformats=unix,dos            " File formats
 set showtabline=2                   " Always show tab bar
 set ignorecase                      " Ignore case by default
 set list                            " Show tabs and EOL
-set listchars=eol:¬,tab:>-,trail:.,extends:»,precedes:«
+set listchars=tab:>-,trail:.
 set cursorline                      " highlight the line the cursor is on
 set tags+=,./.tags,.tags            " Allow hidden tags files
 syntax on                           " Syntax Highlight on

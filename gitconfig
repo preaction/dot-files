@@ -2,7 +2,7 @@
         excludesfile = ~/.gitignore
 
 [branch]
-        autosetuprebase = always
+        autosetuprebase = never
 
 [alias]
         st=status
@@ -31,3 +31,10 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[url "ssh://git@bitbucket.grantstreet.com:7999/"]
+	insteadof = https://bitbucket.grantstreet.com/scm/
+[url "git@gitc.grantstreet.com:"]
+	insteadof = https://gitc.grantstreet.com/
+	insteadof = git://gitc.grantstreet.com/
+[diff "gpg"]
+	textconv = gpg --no-tty --decrypt

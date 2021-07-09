@@ -5,13 +5,14 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
 "Plugin 'Yggdroot/indentLine'
 Plugin 'kien/ctrlp.vim'
 Plugin 'yko/mojo.vim'
@@ -21,6 +22,8 @@ Plugin 'fatih/vim-go'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'jamessan/vim-gnupg'
+Plugin 'prabirshrestha/vim-lsp'
 
 call vundle#end()
 
@@ -39,6 +42,7 @@ set secure
 " Common settings
 " I don't know why, but this fixes a problem with my PuTTY colorscheme
 let g:solarized_termtrans=1
+let mapleader = ","
 colorscheme solarized
 set background=dark
 set autoindent                      " Auto-indent on
@@ -71,10 +75,9 @@ set fileformats=unix,dos            " File formats
 set showtabline=2                   " Always show tab bar
 set ignorecase                      " Ignore case by default
 set list                            " Show tabs and EOL
-set listchars=eol:¬,tab:>-,trail:.,extends:»,precedes:«
 set cursorline                      " highlight the line the cursor is on
-set colorcolumn=90                  " highlight the 90th column
 set tags+=,./.tags,.tags            " Allow hidden tags files
+set directory=~/.vim/swapfiles//    " Move swapfiles out of the current directory
 syntax on                           " Syntax Highlight on
 
 " Status line  [:n]    [git]                      [file]     [flags]   [line,col]  
@@ -86,24 +89,25 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Jump to the first line if we're a git commit message
 au BufReadPost COMMIT_EDITMSG :1
 
+" Leave paste mode after one paste
+au InsertLeave * set nopaste
+
 " A quick macro to remove the last search
 nnoremap <leader><space> :nohl<cr>
 
-" Always add a "lib" directory to the path
-set path+=lib
+" Always add some common directories to the path
+set path+=lib,t/lib,t/tests
 
 filetype plugin on
-
-set guioptions-=e
-set guioptions-=T
-set guioptions+=ac
-set guifont=DejaVuSansMonoForPowerline:h12
 
 " Use ack for :grep
 set grepprg=ack
 
 " Make a . repeat for :
-map <Leader>. @:
+map <Leader>. :cnext<cr>
+map <Leader>, :cprev<cr>
+map <Leader>> :lnext<cr>
+map <Leader>< :lprev<cr>
 
 " use perltidy for .pl, .pm, and .t
 au BufRead,BufNewFile *.pl setl equalprg=perltidy
@@ -116,7 +120,7 @@ au BufRead,BufNewFile *.xml setl equalprg=tidy\ -xml\ -q\ -i\ -w\ 100
 " Module settings
 
 " Ctrl+P
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|db\|blib'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\/\.git\/\|\/db\/\|blib'
 
 " Perlhelp
 let perl_include_pod=1
@@ -157,7 +161,7 @@ au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.markdown  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0 fo+=t
-au BufRead,BufNewFile *.go set nolist sw=4 tw=4 noai noet ts=4
+au BufRead,BufNewFile *.go set nolist sw=4 noai noet ts=4
 
 "----------------------------------------------------------------------------
 " Macros
@@ -190,12 +194,70 @@ let g:syntastic_perl_checkers = ['perl']
 let g:syntastic_javascript_checkers = ['eslint']
 
 "--------------------
-" Client additions
+" trackperlvars
+highlight! TRACK_PERL_VAR ctermfg=NONE ctermbg=NONE cterm=underline gui=underline guifg=NONE guibg=NONE
 
-" Moon DSL files
-au BufRead,BufNewFile *.moon setl filetype=perl
-au BufRead,BufNewFile *.moon.* setl filetype=perl
+nmap <space> :
+iab ,, =>
 
-" TEMPORARY
-"set background=light
-"set nolist
+" Allow machine-specific overrides
+if !empty(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
+"--------------------
+" vim-go
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go setl equalprg="go fmt"
+autocmd Filetype go nmap <leader>aa :call go#alternate#Switch(0, 'edit')<CR>
+autocmd Filetype go nmap <leader>av :call go#alternate#Switch(0, 'vsplit')<CR>
+autocmd Filetype go nmap <leader>as :call go#alternate#Switch(0, 'split')<CR>
+let g:go_test_timeout='60s'
+
+"------------------------------------------------------------------------
+" Language Server
+if executable('pls')
+    au User lsp_setup call lsp#register_server({
+                \ 'name': 'pls',
+                \ 'cmd': {server_info->['pls']},
+                \ 'allowlist': ['perl'],
+                \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
