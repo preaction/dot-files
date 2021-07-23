@@ -1,4 +1,8 @@
 
+set encoding=utf-8
+set t_Co=256
+set termencoding=utf-8
+
 " Load Vundles
 set nocompatible
 filetype off
@@ -6,6 +10,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'tpope/vim-repeat'
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
@@ -24,6 +30,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'prabirshrestha/vim-lsp'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 
@@ -120,7 +128,7 @@ au BufRead,BufNewFile *.xml setl equalprg=tidy\ -xml\ -q\ -i\ -w\ 100
 " Module settings
 
 " Ctrl+P
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\/\.git\/\|\/db\/\|blib'
+let g:ctrlp_custom_ignore = '/node_modules\|/\.DS_Store$\|/\.git/\|/db/\|/blib/'
 
 " Perlhelp
 let perl_include_pod=1
@@ -192,6 +200,10 @@ let g:syntastic_perl_checkers = ['perl']
 "au BufRead,BufNewFile *.pl let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'script'"
 "au BufRead,BufNewFile *.pm let g:syntastic_perl_perlcritic_args="--severity 4 --theme 'module'"
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_lex_flex_exe = ['reflex']
+
+" Go language
+let g:go_fmt_command = "goimports"
 
 "--------------------
 " trackperlvars
