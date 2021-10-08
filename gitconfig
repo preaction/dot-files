@@ -15,22 +15,22 @@
         since = !git log $@ --reverse $(git describe --tags --abbrev=0)..HEAD
 
 [user]
-        name = Doug Bell
-        email = doug@preaction.me
-[push]
-        default = current
+	name = Doug Bell
+	email = doug@preaction.me
+        ;name = Doug Bell
+        ;email = doug@preaction.me
 [diff]
-        algorithm = patience
-        compactionHeuristic = true
+        ;algorithm = patience
+        ;compactionHeuristic = true
 [merge]
-        tool = vimdiff
+        ;tool = vimdiff
 [log]
-    mailmap = true
+        ;mailmap = true
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
 [url "ssh://git@bitbucket.grantstreet.com:7999/"]
 	insteadof = https://bitbucket.grantstreet.com/scm/
 [url "git@gitc.grantstreet.com:"]
@@ -38,3 +38,7 @@
 	insteadof = git://gitc.grantstreet.com/
 [diff "gpg"]
 	textconv = gpg --no-tty --decrypt
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
