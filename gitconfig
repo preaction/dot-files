@@ -24,6 +24,7 @@
         ;compactionHeuristic = true
 [merge]
         ;tool = vimdiff
+    renamelimit = 5000
 [log]
         ;mailmap = true
 [filter "lfs"]
@@ -42,3 +43,5 @@
 	rebase = true
 [init]
 	defaultBranch = main
+[push]
+        default = current
