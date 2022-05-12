@@ -56,8 +56,8 @@ set background=dark
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
 set tabstop=8                       " Use 8 spaces for tabs
-set shiftwidth=4                    " 4 spaces for autoindent
-set softtabstop=4                   " Use soft tabs
+set shiftwidth=2                    " 2 spaces for autoindent
+set softtabstop=2                   " Use soft tabs
 set expandtab                       " Use spaces instead of tabs
 set number                          " Show numbering
 set nowrap                          " Don't wrap long lines
