@@ -30,8 +30,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'prabirshrestha/vim-lsp'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+Plugin 'w0rp/ale'
+Plugin 'posva/vim-vue'
 
 call vundle#end()
 
@@ -149,7 +149,7 @@ au BufRead,BufNewFile *.as   setl filetype=actionscript
 au BufRead,BufNewFile *.mxml setl filetype=mxml
 
 " .vue files
-au BufRead,BufNewFile *.vue set filetype=html
+"au BufRead,BufNewFile *.vue set filetype=vue
 
 " Perl files
 au BufRead,BufNewFile *.t set filetype=perl
@@ -273,3 +273,13 @@ augroup lsp_install
     au!
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+"-------------------------------------------------------------------------
+" Auto-fix JS files with eslint
+let g:ale_fixers = {}
+let g:ale_fixers.javascript = ['eslint']
+let g:ale_fixers.vue = ['eslint']
+let g:ale_fix_on_save = 1
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_linters = {'vue': ['eslint', 'vls']}
+
