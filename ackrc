@@ -5,3 +5,5 @@
 --ignore-directory=.yarn
 --ignore-file=firstlinematch:^(?:[/]\*\*+[/]\s*)?\(function\(
 --pager="less"
+--type-add=mjml:ext:mjml
+--type-add=vue:ext:vue

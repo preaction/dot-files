@@ -169,7 +169,7 @@ au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.markdown  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0 fo+=t
-au BufRead,BufNewFile *.go set nolist sw=4 noai noet ts=4
+au BufRead,BufNewFile *.go setl nolist sw=2 noai noet ts=2
 
 "----------------------------------------------------------------------------
 " Macros

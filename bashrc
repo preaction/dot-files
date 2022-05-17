@@ -104,7 +104,7 @@ source $OSH/oh-my-bash.sh
 set -o vi
 export EDITOR="vim"
 export PATH="$HOME/bin:$HOME/dot-files/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11"
-export LESS=RSXine~
+export LESS=RSXin~
 
 if [ -n "$TMUX" ]; then
     preexec() {
@@ -117,8 +117,7 @@ if [ -d "$HOME/.goenv" ]; then
     export GOENV_ROOT="$HOME/.goenv"
     export PATH="$GOENV_ROOT/bin:$PATH"
     eval "$(goenv init -)"
-    export PATH="$GOROOT/bin:$PATH"
-    export PATH="$PATH:$GOPATH/bin"
+    export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 fi
 
 if [ -d "$HOME/.nvm" ]; then
