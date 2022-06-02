@@ -22,3 +22,6 @@
 [submodule "oh-my-bash"]
 	path = oh-my-bash
 	url = git://github.com/ohmybash/oh-my-bash.git
+[submodule "z"]
+	path = z
+	url = https://github.com/rupa/z.git

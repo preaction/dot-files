@@ -118,6 +118,8 @@ export PAGER="less -FinQ"
 
 export TMUXIFIER_LAYOUT_PATH="$HOME/dot-files/tmuxifier-layouts"
 
+source $HOME/z/z.sh
+
 # Site-specific customizations
 if [[ -f $HOME/.zshrc.after ]]; then
     source $HOME/.zshrc.after;
