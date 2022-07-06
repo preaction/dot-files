@@ -88,6 +88,9 @@ set tags+=,./.tags,.tags            " Allow hidden tags files
 set directory=~/.vim/swapfiles//    " Move swapfiles out of the current directory
 syntax on                           " Syntax Highlight on
 
+" Allow "@" in filenames
+set isfname+=@-@
+
 " Status line  [:n]    [git]                      [file]     [flags]   [line,col]  
 set statusline=%a%-40.60(%{fugitive#statusline()}:%-0.45f\ %=%M%R%H%)%=%l/%L#%n"
 

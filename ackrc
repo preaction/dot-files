@@ -3,7 +3,7 @@
 --ignore-directory=node_modules
 --ignore-directory=dist
 --ignore-directory=.yarn
---ignore-file=firstlinematch:^(?:[/]\*\*+[/]\s*)?\(function\(
+--ignore-file=firstlinematch:^(?:[/]\*\*+[/]\s*)?[!]?\(function\(
 --pager="less"
 --type-add=mjml:ext:mjml
 --type-add=vue:ext:vue
