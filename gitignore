@@ -30,7 +30,8 @@
 *.log
 *.sqlite
 *.db
-*.db-{shm,wal}
+*.db-shm
+*.db-wal
 
 # OS generated files #
 ######################
@@ -57,5 +58,7 @@ perltidy.ERR
 # Custom environments and installed modules #
 #############################################
 node_modules/
+*.tsbuildinfo
 # Perl's Carton
 /local/
+cpanfile.snapshot
