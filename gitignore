@@ -62,3 +62,4 @@ node_modules/
 # Perl's Carton
 /local/
 cpanfile.snapshot
+.vim
