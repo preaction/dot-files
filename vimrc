@@ -20,7 +20,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 "Plugin 'Yggdroot/indentLine'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'yko/mojo.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'leafgarland/typescript-vim'
@@ -32,6 +32,7 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'w0rp/ale'
 Plugin 'posva/vim-vue'
+Plugin 'neoclide/coc.nvim'
 
 call vundle#end()
 
@@ -86,6 +87,8 @@ set list                            " Show tabs and EOL
 set cursorline                      " highlight the line the cursor is on
 set tags+=,./.tags,.tags            " Allow hidden tags files
 set directory=~/.vim/swapfiles//    " Move swapfiles out of the current directory
+set updatetime=300
+set signcolumn=yes
 syntax on                           " Syntax Highlight on
 
 " Allow "@" in filenames
@@ -131,7 +134,7 @@ au BufRead,BufNewFile *.xml setl equalprg=tidy\ -xml\ -q\ -i\ -w\ 100
 " Module settings
 
 " Ctrl+P
-let g:ctrlp_custom_ignore = '/node_modules\|/\.DS_Store$\|/\.git/\|/db/\|/blib/'
+let g:ctrlp_custom_ignore = '/node_modules\|/\.DS_Store$\|/\.git/\|/blib/\|/dist/'
 
 " Perlhelp
 let perl_include_pod=1
@@ -286,3 +289,4 @@ let g:ale_fix_on_save = 1
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
 
+let g:coc_global_extensions = ['coc-tsserver']

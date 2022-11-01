@@ -106,8 +106,6 @@ export EDITOR="vim"
 export PATH="$HOME/bin:$HOME/dot-files/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11"
 export LESS=RSXin~
 
-source ~/dot-files/z/z.sh
-
 if [ -n "$TMUX" ]; then
     preexec() {
         export $(tmux show-environment | grep "^SSH_AUTH_SOCK")

@@ -1,0 +1,8 @@
+#!/usr/bin/env perl
+use strict; use warnings;
+if ( my $nvim = `which nvim` ) {
+  chomp $nvim;
+  exec $nvim, @ARGV;
+}
+my @vims = grep $_ ne __FILE__, map s/\n+$//r, `which -a vim`;
+exec $vims[0], @ARGV;
