@@ -155,7 +155,8 @@ au BufRead,BufNewFile *.as   setl filetype=actionscript
 au BufRead,BufNewFile *.mxml setl filetype=mxml
 
 " .vue files
-"au BufRead,BufNewFile *.vue set filetype=vue
+au BufRead,BufNewFile *.vue setl filetype=vue
+autocmd Filetype vue setlocal iskeyword+=-
 
 " Perl files
 au BufRead,BufNewFile *.t set filetype=perl
