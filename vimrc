@@ -33,6 +33,8 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'w0rp/ale'
 Plugin 'posva/vim-vue'
 Plugin 'neoclide/coc.nvim'
+Plugin 'nvim-treesitter/nvim-treesitter'
+Plugin 'nvim-treesitter/nvim-treesitter-context'
 
 call vundle#end()
 
@@ -56,7 +58,7 @@ colorscheme solarized
 set background=dark
 set autoindent                      " Auto-indent on
 set nocompatible                    " Use vim addvance settings
-set tabstop=8                       " Use 8 spaces for tabs
+set tabstop=2                       " Use 2 spaces for tabs
 set shiftwidth=2                    " 2 spaces for autoindent
 set softtabstop=2                   " Use soft tabs
 set expandtab                       " Use spaces instead of tabs
@@ -176,7 +178,7 @@ au BufRead,BufNewFile *.txt  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.md  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile *.markdown  setl lbr wm=0 tw=72 fo+=t
 au BufRead,BufNewFile COMMIT_EDITMSG setl lbr tw=72 wm=0 fo+=t
-au BufRead,BufNewFile *.go setl nolist sw=2 noai noet ts=2
+au BufRead,BufNewFile *.go setl nolist noai noet
 
 "----------------------------------------------------------------------------
 " Macros
@@ -211,10 +213,6 @@ let g:syntastic_lex_flex_exe = ['reflex']
 
 " Go language
 let g:go_fmt_command = "goimports"
-
-"--------------------
-" trackperlvars
-highlight! TRACK_PERL_VAR ctermfg=NONE ctermbg=NONE cterm=underline gui=underline guifg=NONE guibg=NONE
 
 nmap <space> :
 iab ,, =>
@@ -290,4 +288,4 @@ let g:ale_fix_on_save = 1
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
 
-let g:coc_global_extensions = ['coc-tsserver']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-go']

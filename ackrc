@@ -2,6 +2,7 @@
 --ignore-directory=vendor
 --ignore-directory=node_modules
 --ignore-directory=dist
+--ignore-directory=cdn/container
 --ignore-directory=.yarn
 --ignore-file=firstlinematch:^(?:[/]\*\*+[/]\s*)?[!]?\(function\(
 --pager="less"
