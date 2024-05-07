@@ -8,3 +8,5 @@
 --pager="less"
 --type-add=mjml:ext:mjml
 --type-add=vue:ext:vue
+--type-set=ts:ext:ts
+--type-set=tsdef:match:/.+\.d\.ts/
