@@ -63,3 +63,4 @@ node_modules/
 /local/
 cpanfile.snapshot
 .vim
+go-build*

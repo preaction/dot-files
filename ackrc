@@ -5,6 +5,7 @@
 --ignore-directory=cdn/container
 --ignore-directory=.yarn
 --ignore-file=firstlinematch:^(?:[/]\*\*+[/]\s*)?[!]?\(function\(
+--ignore-file=is:go.sum
 --pager="less"
 --type-add=mjml:ext:mjml
 --type-add=vue:ext:vue

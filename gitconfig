@@ -17,16 +17,12 @@
 [user]
 	name = Doug Bell
 	email = doug@preaction.me
-        ;name = Doug Bell
-        ;email = doug@preaction.me
 [diff]
-        ;algorithm = patience
-        ;compactionHeuristic = true
+        algorithm = patience
+        compactionHeuristic = true
 [merge]
-        ;tool = vimdiff
+        tool = vimdiff
     renamelimit = 5000
-[log]
-        ;mailmap = true
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
@@ -34,14 +30,24 @@
 	clean = git-lfs clean -- %f
 [url "ssh://git@bitbucket.grantstreet.com:7999/"]
 	insteadof = https://bitbucket.grantstreet.com/scm/
+	insteadof = https://bitbucket.grantstreet.com/
 [url "git@gitc.grantstreet.com:"]
 	insteadof = https://gitc.grantstreet.com/
 	insteadof = git://gitc.grantstreet.com/
 [diff "gpg"]
-	textconv = gpg --no-tty --decrypt
+	textconv = gpg -dnq --batch --no-tty
+[log "gpg"]
+	textconv = gpg -dnq --batch --no-tty
+[show "gpg"]
+	textconv = gpg -dnq --batch --no-tty
 [pull]
 	rebase = true
 [init]
 	defaultBranch = main
 [push]
         default = current
+[log]
+	mailmap = true
+[fetch]
+	prune=true
+	pruneTags = true
