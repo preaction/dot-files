@@ -66,10 +66,6 @@ fpath=($HOME/dot-files/zsh $fpath)
 export PATH="$HOME/dot-files/git-extras/bin:$HOME/dot-files/powerline/scripts:$PATH"
 export MANPATH="$HOME/dot-files/git-extras/man:$MANPATH"
 
-# Tmuxifier
-export PATH="$HOME/dot-files/tmuxifier/bin:$PATH"
-eval "$(tmuxifier init -)"
-
 # Vi keybindings
 bindkey -v
 bindkey "^R" history-incremental-search-backward
@@ -116,7 +112,9 @@ export TEST_PRETTY_COLOR_NAME=Bright_Blue
 # -Q -- Really Quiet. Will never send a terminal bell ever
 export PAGER="less -FinQ"
 
-export TMUXIFIER_LAYOUT_PATH="$HOME/dot-files/tmuxifier-layouts"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Site-specific customizations
 if [[ -f $HOME/.zshrc.after ]]; then

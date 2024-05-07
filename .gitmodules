@@ -1,27 +1,12 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = http://github.com/robbyrussell/oh-my-zsh.git
-[submodule "powerline"]
-	path = powerline
-	url = http://github.com/Lokaltog/powerline.git
-[submodule "tmuxifier"]
-	path = tmuxifier
-	url = https://github.com/jimeh/tmuxifier.git
 [submodule "oh-my-zsh-custom/plugins/zsh-syntax-highlighting"]
 	path = oh-my-zsh-custom/plugins/zsh-syntax-highlighting
 	url = http://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "git-extras"]
 	path = git-extras
 	url = http://github.com/visionmedia/git-extras.git
-[submodule "vim/bundle/Vundle.vim"]
-	path = vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
 [submodule "oh-my-bash"]
 	path = oh-my-bash
-	url = git://github.com/ohmybash/oh-my-bash.git
-[submodule "z"]
-	path = z
-	url = https://github.com/rupa/z.git
+	url = https://github.com/ohmybash/oh-my-bash.git
