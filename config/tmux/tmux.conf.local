@@ -400,6 +400,9 @@ bind R respawn-pane -k
 # move status line to top
 #set -g status-position top
 
+# I type fast
+set -sg escape-time 10
+set -sg repeat-time 0
 
 # -- tpm -----------------------------------------------------------------------
 
