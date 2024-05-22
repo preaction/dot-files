@@ -169,6 +169,9 @@ vim.opt.formatoptions:append("q")
 vim.opt.formatoptions:append("n")
 vim.opt.textwidth = 72
 
+-- Fix ripgrep settings
+vim.opt.grepprg = "rg --vimgrep $* /dev/null"
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -488,6 +491,16 @@ require("lazy").setup({
 				--   },
 				-- },
 				-- pickers = {}
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--trim", -- add this value
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
