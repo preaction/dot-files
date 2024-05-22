@@ -142,8 +142,8 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- vim.opt.list = true
+vim.opt.listchars = { tab = "· ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -171,6 +171,12 @@ vim.opt.textwidth = 72
 
 -- Fix ripgrep settings
 vim.opt.grepprg = "rg --vimgrep $* /dev/null"
+
+-- Tabs / spaces
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 2
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -1147,6 +1153,7 @@ require("lazy").setup({
 		config = true,
 	},
 	"jamessan/vim-gnupg",
+	"yko/mojo.vim",
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
