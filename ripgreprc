@@ -1,0 +1,17 @@
+-S
+--engine=auto
+--max-columns=72
+--max-columns-preview
+--no-require-git
+--glob=!**/vendor/**
+--glob=!**/coverage/lcov-report/**
+--glob=!**/node_modules/**
+--glob=!**/public/js/current/**
+--glob=!dist/**
+--glob=!**/cdn/container/**
+--glob=!.yarn/**
+--glob=!go.sum
+--type-add=mjml:*.mjml
+--type-add=vue:*.vue
+--type-add=ts:*.ts
+--type-add=tsdef:*.d.ts

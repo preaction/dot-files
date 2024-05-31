@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 #
 
 export EDITOR=vim
-export LESS=RSXine~
+export LESS=RSXin~
 
 alias :e=$EDITOR
 alias :q=exit
@@ -111,6 +111,9 @@ export TEST_PRETTY_COLOR_NAME=Bright_Blue
 # -n -- No line numbers. If you need line numbers, use /vim?/
 # -Q -- Really Quiet. Will never send a terminal bell ever
 export PAGER="less -FinQ"
+
+# ripgrep configuration file
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
