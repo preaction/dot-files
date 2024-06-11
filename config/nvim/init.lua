@@ -731,12 +731,13 @@ require("lazy").setup({
 				--
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				tsserver = {
-					settings = {
+					filetypes = { "javascript", "typescript", "vue" },
+					init_options = {
 						plugins = {
 							{
 								name = "@vue/typescript-plugin",
-								location = "/path/to/@vue/language-server",
-								languages = { "vue" },
+								location = "/Users/doug/.local/share/nvim/mason/bin/vue-language-server",
+								languages = { "javascript", "typescript", "vue" },
 							},
 						},
 					},
