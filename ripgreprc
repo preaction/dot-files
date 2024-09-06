@@ -1,8 +1,6 @@
 -S
---engine=auto
 --max-columns=72
 --max-columns-preview
---no-require-git
 --glob=!**/vendor/**
 --glob=!**/coverage/lcov-report/**
 --glob=!**/node_modules/**

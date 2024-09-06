@@ -157,6 +157,9 @@ vim.opt.scrolloff = 10
 -- Always show the tab line
 vim.opt.showtabline = 2
 
+-- @ is allowed in filenames
+vim.opt.isfname:append("@-@")
+
 -- Auto wrap comments everywhere
 -- See :help fo-table
 vim.opt.formatoptions:remove("o")
@@ -186,8 +189,13 @@ vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set(
+	"n",
+	"[d",
+	"<cmd>lua vim.diagnostic.jump({count = -1})<cr>",
+	{ desc = "Go to previous [D]iagnostic message" }
+)
+vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.jump({count = 1})<cr>", { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
@@ -272,33 +280,6 @@ require("lazy").setup({
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
-			signs = {
-				add = { hl = "GitSignsAdd", text = "┃", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-				change = {
-					hl = "GitSignsChange",
-					text = "┃",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-				delete = {
-					hl = "GitSignsDelete",
-					text = "┉",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				topdelete = {
-					hl = "GitSignsDelete",
-					text = "┉",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				changedelete = {
-					hl = "GitSignsChange",
-					text = "┃",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-			},
 			signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 			numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
 			linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -315,9 +296,6 @@ require("lazy").setup({
 				delay = 1000,
 				ignore_whitespace = false,
 			},
-			current_line_blame_formatter_opts = {
-				relative_time = false,
-			},
 			sign_priority = 6,
 			update_debounce = 100,
 			status_formatter = nil, -- Use default
@@ -329,9 +307,6 @@ require("lazy").setup({
 				relative = "cursor",
 				row = 0,
 				col = 1,
-			},
-			yadm = {
-				enable = false,
 			},
 		},
 	},
@@ -355,81 +330,58 @@ require("lazy").setup({
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		config = function() -- This is the function that runs, AFTER loading
-			require("which-key").setup({
-				ignore_missing = true,
-				window = {
-					border = "single", -- none, single, double, shadow
-				},
-			})
+			require("which-key").setup({})
 
 			-- Add highlight colors
 			vim.api.nvim_set_hl(0, "WhichKeyBorder", { link = "NormalFloat" })
 
-			require("which-key").register({
-				["<leader>g"] = {
-					name = "[g]it",
-					j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-					k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-					l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-					p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-					r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-					R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-					s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-					u = {
-						"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-						"Undo Stage Hunk",
-					},
-					o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-					b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-					c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-					d = {
-						"<cmd>Gitsigns diffthis HEAD<cr>",
-						"Diff",
-					},
+			require("which-key").add({
+				{ "<leader>f", group = "[f]ind files" },
+				{ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Find files" },
+				{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
+				{ "<leader>ft", "<cmd>Telescope live_grep <cr>", desc = "Find Text Pattern" },
+				{ "<leader>g", group = "[g]it" },
+				{ "<leader>gA", "<cmd>Git add -a<cr>", desc = "Stage all changes" },
+				{ "<leader>gC", "<cmd>Git commit -v --status<cr>", desc = "Commit staged" },
+				{ "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
+				{ "<leader>ga", "<cmd>Git add %<cr>", desc = "Stage this file" },
+				{ "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+				{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+				{ "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff" },
+				{ "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },
+				{ "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk" },
+				{
+					"<leader>gl",
+					"<cmd>lua require 'gitsigns'.toggle_current_line_blame()<cr>",
+					desc = "Blame (toggle)",
 				},
-
-				-- Language Support
-				["<leader>l"] = {
-					name = "[l]anguage",
-					a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-					f = {
-						"<cmd>lua require 'conform'.format { async = true, lsp_fallback = true }<cr>",
-						"[F]ormat buffer",
-					},
-					i = { "<cmd>LspInfo<cr>", "Info" },
-					l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-					r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-					s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-					S = {
-						"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-						"Workspace Symbols",
-					},
+				{ "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
+				{ "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk" },
+				{ "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
+				{ "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
+				{ "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
+				{ "<leader>l", group = "[l]anguage" },
+				{ "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
+				{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+				{
+					"<leader>lf",
+					"<cmd>lua require 'conform'.format { async = true, lsp_fallback = true }<cr>",
+					desc = "[F]ormat buffer",
 				},
-
-				-- Telescope
-				["<leader>f"] = {
-					name = "[f]ind files",
-					f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
-					t = { "<cmd>Telescope live_grep <cr>", "Find Text Pattern" },
-					r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
-				},
-
-				["<leader>s"] = {
-					name = "[s]earch text",
-					h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-					m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-					r = { "<cmd>Telescope registers<cr>", "Registers" },
-					k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-					c = { "<cmd>Telescope commands<cr>", "Commands" },
-				},
-
-				--ToggleTerm
-				["<leader>t"] = {
-					name = "[t]erminal",
-					f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-					h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-					v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-				},
+				{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+				{ "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
+				{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+				{ "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+				{ "<leader>s", group = "[s]earch text" },
+				{ "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+				{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
+				{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+				{ "<leader>sm", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+				{ "<leader>sr", "<cmd>Telescope registers<cr>", desc = "Registers" },
+				{ "<leader>t", group = "[t]erminal" },
+				{ "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
+				{ "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
+				{ "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
 			})
 		end,
 	},
@@ -510,6 +462,11 @@ require("lazy").setup({
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
+					},
+				},
+				defaults = {
+					preview = {
+						treesitter = false,
 					},
 				},
 			})
@@ -725,31 +682,8 @@ require("lazy").setup({
 				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`tsserver`) will work just fine
-				tsserver = {
-					filetypes = { "typescript", "javascript" },
-					init_options = {
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = "/Users/dbell/.local/share/nvim/mason/bin/vue-language-server",
-								languages = { "typescript", "javascript", "vue" },
-							},
-						},
-					},
-				},
-
-				volar = {
-					settings = {
-						vue = {
-							hybridMode = false,
-						},
-					},
-				},
+				vtsls = {},
+				vuels = {},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -942,11 +876,11 @@ require("lazy").setup({
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"maxmx03/solarized.nvim",
-		priority = 1000, -- Make sure to load this before all the other start plugins.
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
 		init = function()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme("solarized")
+			vim.cmd.colorscheme("solarized-osaka")
 
 			-- You can configure highlights by doing something like:
 			-- vim.api.nvim_set_hl(0, 'WinSeparator', { link = 'Normal' })
@@ -1152,12 +1086,14 @@ require("lazy").setup({
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
 	-- { import = 'custom.plugins' },
 
+	-- !!! Custom plugins here !!! --
 	{
 		"akinsho/toggleterm.nvim",
 		config = true,
 	},
 	"jamessan/vim-gnupg",
 	"yko/mojo.vim",
+	"tpope/vim-fugitive",
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
