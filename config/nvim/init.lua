@@ -93,6 +93,12 @@ vim.g.maplocalleader = " "
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
+-- Settings for neovide
+vim.o.guifont = "Hasklug Nerd Font:h14"
+vim.g.neovide_position_animation_length = 0
+vim.g.neovide_scroll_animation_length = 0
+vim.g.neovide_cursor_animation_length = 0
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -682,8 +688,31 @@ require("lazy").setup({
 				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				vtsls = {},
-				vuels = {},
+				--
+				-- Some languages (like typescript) have entire language plugins that can be useful:
+				--    https://github.com/pmizio/typescript-tools.nvim
+				--
+				-- But for many setups, the LSP (`tsserver`) will work just fine
+				tsserver = {
+					filetypes = { "typescript", "javascript", "vue" },
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = "/Users/doug/.local/share/nvim/mason/bin/vue-language-server",
+								languages = { "typescript", "javascript", "vue" },
+							},
+						},
+					},
+				},
+
+				volar = {
+					settings = {
+						vue = {
+							hybridMode = false,
+						},
+					},
+				},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -731,7 +760,6 @@ require("lazy").setup({
 					end,
 				},
 			})
-
 		end,
 	},
 
