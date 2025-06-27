@@ -179,7 +179,8 @@ vim.opt.formatoptions:append("n")
 vim.opt.textwidth = 72
 
 -- Fix ripgrep settings
-vim.opt.grepprg = "rg --vimgrep $* /dev/null"
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- Tabs / spaces
 vim.opt.expandtab = true
@@ -368,7 +369,7 @@ require("lazy").setup({
 				{ "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
 				{ "<leader>l", group = "[l]anguage" },
 				{ "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
-				{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+				{ "<leader>la", "<cmd>Lspsaga code_action<cr>", desc = "Code Action" },
 				{
 					"<leader>lf",
 					"<cmd>lua require 'conform'.format { async = true, lsp_fallback = true }<cr>",
@@ -376,8 +377,10 @@ require("lazy").setup({
 				},
 				{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
 				{ "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-				{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+				{ "<leader>lo", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
+				{ "<leader>lr", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
 				{ "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+				{ "<leader>lu", "<cmd>Lspsaga finder<cr>", desc = "Uses" },
 				{ "<leader>s", group = "[s]earch text" },
 				{ "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Commands" },
 				{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
@@ -613,11 +616,11 @@ require("lazy").setup({
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
-					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+					map("<leader>ca", "<cmd>Lspsaga code_action<cr>", "[C]ode [A]ction")
 
 					-- Opens a popup that displays documentation about the word under your cursor
 					--  See `:help K` for why this keymap.
-					map("K", vim.lsp.buf.hover, "Hover Documentation")
+					map("K", "<cmd>Lspsaga hover_doc<cr>", "Hover Documentation")
 
 					-- WARN: This is not Goto Definition, this is Goto Declaration.
 					--  For example, in C this would take you to the header.
@@ -661,7 +664,11 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- clangd = {},
-				gopls = {},
+				gopls = {
+					staticcheck = true,
+					usePlaceholders = true,
+				},
+
 				eslint = {
 					format = { enable = true }, -- this will enable formatting
 					autoFixOnSave = true,
@@ -763,6 +770,25 @@ require("lazy").setup({
 		end,
 	},
 
+	{ -- "Improve LSP for Neovim"
+		"nvimdev/lspsaga.nvim",
+		config = function()
+			require("lspsaga").setup({
+				lightbulb = {
+					virtual_text = false,
+				},
+				outline = {
+					close_after_jump = true,
+				},
+			})
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+			"neovim/nvim-lspconfig",
+		},
+	},
+
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		lazy = false,
@@ -839,7 +865,7 @@ require("lazy").setup({
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						luasnip.lsp_expand(args.body)
+						vim.snippet.expand(args.body)
 					end,
 				},
 				completion = { completeopt = "menu,menuone,noinsert" },
@@ -966,7 +992,20 @@ require("lazy").setup({
 		branch = "main",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc", "markdown_inline" },
+			ensure_installed = {
+				"bash",
+				"c",
+				"go",
+				"html",
+				"lua",
+				"luadoc",
+				"markdown",
+				"vim",
+				"vimdoc",
+				"markdown_inline",
+				"typescript",
+				"javascript",
+			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = {
@@ -994,17 +1033,8 @@ require("lazy").setup({
 	},
 
 	{
-		"kosayoda/nvim-lightbulb",
-		init = function(_)
-			require("nvim-lightbulb").setup({
-				autocmd = { enabled = true },
-			})
-		end,
-	},
-
-	{
 		"folke/trouble.nvim",
-		branch = "dev", -- IMPORTANT!
+		branch = "main",
 		keys = {
 			{
 				"<leader>xx",
