@@ -3,6 +3,7 @@
 
 [branch]
         autosetuprebase = never
+	sort = -committerdate
 
 [alias]
         st=status
@@ -13,13 +14,17 @@
         ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
         theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
         since = !git log $@ --reverse $(git describe --tags --abbrev=0)..HEAD
+	main = !git checkout $(basename $(bash -c 'ls -d $(git rev-parse --show-toplevel)/.git/refs/heads/{trunk,main,master} 2>/dev/null' | head -1))
 
 [user]
 	name = Doug Bell
 	email = doug@preaction.me
 [diff]
-        algorithm = patience
+	algorithm = histogram
         compactionHeuristic = true
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [merge]
         tool = vimdiff
     renamelimit = 5000
@@ -45,9 +50,28 @@
 [init]
 	defaultBranch = main
 [push]
-        default = current
+	# Use for Git older than 2.37
+	default = current
+	# autoSetupRemote added in Git 2.37
+	# default = simple
+	# autoSetupRemote = true
+	followTags = true
 [log]
 	mailmap = true
 [fetch]
-	prune=true
+	prune = true
 	pruneTags = true
+	all = true
+[column]
+	ui = auto
+[tag]
+	sort = version:refname
+[help]
+	autocorrect = 0
+[rerere]
+	enabled = true
+	autoupdate = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
