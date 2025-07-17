@@ -805,6 +805,9 @@ require("lazy").setup({
 						lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 					}
 				end,
+				default_format_opts = {
+					lsp_format = true,
+				},
 				formatters_by_ft = {
 					lua = { "stylua" },
 					-- Conform can also run multiple formatters sequentially
@@ -815,6 +818,7 @@ require("lazy").setup({
 					-- javascript = { { "prettierd", "prettier" } },
 					javascript = { "eslint" },
 					typescript = { "eslint" },
+					go = { "goimports", "gofmt", stop_after_first = true },
 				},
 			}
 		end,
