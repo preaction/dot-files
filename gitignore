@@ -51,6 +51,7 @@ Thumbs.db
 *.bak
 *\#
 perltidy.ERR
+.vscode
 .tags
 # Local project vimrc files
 .vimrc
