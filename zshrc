@@ -68,18 +68,19 @@ bindkey "^R" history-incremental-search-backward
 # Emacs keybindings
 #bindkey -e
 
+# Homebrew (https://brew.sh)
+if [ -e "/usr/local/Homebrew/bin/brew" ]; then
+    eval "$(/usr/local/Homebrew/bin/brew shellenv)"
+elif [ -e "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Bin scripts
 if [[ -d /usr/local/bin ]]; then
     export PATH=/usr/local/bin:$PATH
 fi
 if [[ -d /usr/local/sbin ]]; then
     export PATH=/usr/local/sbin:$PATH
-fi
-if [[ -d $HOME/dot-files/bin ]]; then
-    export PATH=$HOME/dot-files/bin:$PATH
-fi
-if [[ -d $HOME/bin ]]; then
-    export PATH=$HOME/bin:$PATH
 fi
 if [[ -d $HOME/perl5/bin ]]; then
     export PATH=$HOME/perl5/bin:$PATH
@@ -115,16 +116,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [ -e "/opt/homebrew/bin/brew" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 if [ -d "$HOME/.goenv" ]; then
     export GOENV_ROOT="$HOME/.goenv"
     export PATH="$GOENV_ROOT/bin:$PATH"
     eval "$(goenv init -)"
     export PATH="$GOROOT/bin:$PATH"
     export PATH="$PATH:$GOPATH/bin"
+fi
+
+if [[ -d $HOME/dot-files/bin ]]; then
+    export PATH=$HOME/dot-files/bin:$PATH
+fi
+if [[ -d $HOME/bin ]]; then
+    export PATH=$HOME/bin:$PATH
 fi
 
 # Site-specific customizations
