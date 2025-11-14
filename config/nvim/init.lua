@@ -699,8 +699,8 @@ require("lazy").setup({
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
-				-- But for many setups, the LSP (`tsserver`) will work just fine
-				tsserver = {
+				-- But for many setups, the LSP (`ts_ls`) will work just fine
+				ts_ls = {
 					filetypes = { "typescript", "javascript", "vue" },
 					init_options = {
 						plugins = {
@@ -709,14 +709,6 @@ require("lazy").setup({
 								location = "/Users/doug/.local/share/nvim/mason/bin/vue-language-server",
 								languages = { "typescript", "javascript", "vue" },
 							},
-						},
-					},
-				},
-
-				volar = {
-					settings = {
-						vue = {
-							hybridMode = false,
 						},
 					},
 				},
@@ -735,6 +727,8 @@ require("lazy").setup({
 						},
 					},
 				},
+
+				perlnavigator = {},
 			}
 
 			-- Ensure the servers and tools above are installed
