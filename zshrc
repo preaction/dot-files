@@ -58,12 +58,8 @@ export LESS=RSXin~
 alias :e=$EDITOR
 alias :q=exit
 
-# Fix git-completion for BofA
-zstyle ':completion:*:*:git:*' script $HOME/dot-files/complete/git-completion.bash
-fpath=($HOME/dot-files/zsh $fpath)
-
 # git-extras
-export PATH="$HOME/dot-files/git-extras/bin:$HOME/dot-files/powerline/scripts:$PATH"
+export PATH="$HOME/dot-files/git-extras/bin:$PATH"
 export MANPATH="$HOME/dot-files/git-extras/man:$MANPATH"
 
 # Vi keybindings
