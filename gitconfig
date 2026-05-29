@@ -14,7 +14,7 @@
         ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
         theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
         since = !git log $@ --reverse $(git describe --tags --abbrev=0)..HEAD
-	main = !git checkout $(basename $(bash -c 'ls -d $(git rev-parse --show-toplevel)/.git/refs/heads/{trunk,main,master} 2>/dev/null' | head -1))
+  main = !git checkout $(basename $(bash -c 'ls -df $(git rev-parse --show-toplevel)/.git/refs/{heads/trunk,remotes/origin/trunk,heads/main,remotes/origin/main,heads/master,remotes/origin/master} 2>/dev/null' | head -1))
 
 [user]
 	name = Doug Bell
