@@ -69,19 +69,13 @@ bindkey "^R" history-incremental-search-backward
 #bindkey -e
 
 # Homebrew (https://brew.sh)
-if [ -e "/usr/local/Homebrew/bin/brew" ]; then
-    eval "$(/usr/local/Homebrew/bin/brew shellenv)"
-elif [ -e "/opt/homebrew/bin/brew" ]; then
+if [ -e "/opt/homebrew/bin/brew" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -e "/usr/local/Homebrew/bin/brew" ]; then
+    eval "$(/usr/local/Homebrew/bin/brew shellenv)"
 fi
 
 # Bin scripts
-if [[ -d /usr/local/bin ]]; then
-    export PATH=/usr/local/bin:$PATH
-fi
-if [[ -d /usr/local/sbin ]]; then
-    export PATH=/usr/local/sbin:$PATH
-fi
 if [[ -d $HOME/perl5/bin ]]; then
     export PATH=$HOME/perl5/bin:$PATH
 fi
@@ -90,14 +84,6 @@ fi
 if [[ -e $HOME/perl5/perlbrew/etc/bashrc ]]; then
     source $HOME/perl5/perlbrew/etc/bashrc
 fi
-
-# Fix git perl scripts in case of local::lib
-# If we install modules for a different arch in local::lib, we'll get some problems
-if [[ -x /usr/bin/perl ]]; then
-    GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib )'`
-    GITPERLLIB=/usr/local/lib/perl5/site_perl:$GITPERLLIB
-fi
-export GITPERLLIB
 
 # Test::Pretty. Adjust color for solarized
 export TEST_PRETTY_COLOR_NAME=Bright_Blue

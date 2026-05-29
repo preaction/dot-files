@@ -4,6 +4,8 @@
 --ignore-directory=dist
 --ignore-directory=cdn/container
 --ignore-directory=.yarn
+--ignore-directory=.build
+--ignore-directory=local
 --ignore-file=firstlinematch:^(?:[/]\*\*+[/]\s*)?[!]?\(function\(
 --ignore-file=is:go.sum
 --pager="less"
